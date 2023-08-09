@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome to FyF, where you can find the perfect rhetorical figure for you. {% endblock %}</h1>
+
+    <form method="post">
+
+        <div class="form-group">
+            <label for="text">Text</label>
+            <textarea name="text" placeholder="Poste deinen Text hier"
+                      class="form-control">{{ request.form['content'] }}</textarea>
+        </div>
+
+
+        <div class="form-group">
+            <label for="operation">Operation</label>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Wähle die Operation
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Hinzufügung</a>
+                    <a class="dropdown-item" href="#">Wiederholung</a>
+                    <a class="dropdown-item" href="#">Weglassen</a>
+                    <a class="dropdown-item" href="#">Nichts davon</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="operation">Betroffenes Element</label>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Wähle betroffenes Element
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Worts</a>
+                    <a class="dropdown-item" href="#">Buchstabens</a>
+                    <a class="dropdown-item" href="#">Satzes</a>
+                    <a class="dropdown-item" href="#">Mehrere Wörter/Phrase</a>
+                </div>
+            </div>
+
+        </div>
+          <div class="form-group">
+            <label for="operation">Wo tritt die Figur auf?</label>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Wähle die Position!
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Anfang</a>
+                    <a class="dropdown-item" href="#">Ende</a>
+                    <a class="dropdown-item" href="#">Anfang und Ende</a>
+                    <a class="dropdown-item" href="#">Mitte</a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea name="content" placeholder="Post content"
+                      class="form-control">{{ request.form['content'] }}</textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+
+
+    <form method="post">
+        <div class="form-group">
+            <label for="operation">Operation</label><input type="text" name="title"
+                   placeholder="Post title" class="form-control"
+                   value="{{ request.form['title'] }}"></input>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea name="content" placeholder="Post content"
+                      class="form-control">{{ request.form['content'] }}</textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+
+
+
+
+    {% for post in posts %}
+        <a href="{{ url_for('post', post_id=post["id"]) }}">
+            <h2>{{ post['title'] }}</h2>
+        </a>
+        <span class="badge badge-primary">{{ post['created'] }}</span>
+        <a href="{{ url_for("edit", id=post["id"]) }}">
+            <span class="badge badge-warning">Edit</span>
+        </a>
+        <hr>
+    {% endfor %}
+{% endblock %}
