@@ -23,11 +23,13 @@ CREATE TABLE rhetorical_figures (
     name VARCHAR(255)
 );
 
-
 CREATE TABLE contains_figure (
-    PRIMARY KEY (example_id, rhet_figure_id),
-    example_id INTEGER FOREIGN KEY REFERENCES examples(example_id),
-    rhet_figure_id INTEGER FOREIGN KEY REFERENCES rhetorical_figures(rhet_figure_id),
+    example_id INTEGER,
+    rhet_figure_id INTEGER,
     human_verified BOOLEAN,
-    algorithm_verified BOOLEAN
+    algorithm_verified BOOLEAN,
+    PRIMARY KEY (example_id, rhet_figure_id),
+    FOREIGN KEY (example_id) REFERENCES examples(example_id),
+    FOREIGN KEY (rhet_figure_id) REFERENCES rhetorical_figures(rhet_figure_id)
+
 );
