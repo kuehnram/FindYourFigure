@@ -1,19 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Welcome to FyF, where you can find the perfect rhetorical figure for you. {% endblock %}</h1>
+    <h1>Finde deine Figur (FyF)!</h1>
+        <p>Du vermutest eine rhetorische Figur in deinem Text, aber du weißt nicht, wie sie heißt oder wie sie auf die Leser wirk?
+            Finde es hier heraus! Gib dazu einfach folgende Informationen an. Wortelement und Satz für Anapher
 
 
     <form method="post">
         <div class="form-group">
-            <label for="text">Text</label>
-            <textarea name="text" placeholder="Post text with rhetorical figure"
+            <label for="text">Text*</label>
+            <textarea name="text" placeholder="Gebe einen Text mit einer rhetorischen Figur ein!"
                       class="form-control">{{ request.form['text'] }}</textarea>
         </div>
         <div class="form-group">
+            <button type="button" class="btn btn-success">Oder Text aus Datenbank</button>
+        </div>
+
+        <div class="form-group">
             <label for="author">Autor</label>
             <input type="text" name="author"
-                   placeholder="Autor" class="form-control"
+                   placeholder="Vorname Nachname" class="form-control"
                    value="{{ request.form['author'] }}"></input>
         </div>
         <div class="form-group">
@@ -24,20 +30,20 @@
         </div>
 
         <div class="input-group">
-            <span class="input-group-addon">Bitte wähle welche Operation stattfindet: </span>
+            <span class="input-group-addon">Bitte wähle, welche Operation stattfindet: </span>
             <select name="operation" class="selectpicker form-control" id="operation">
                 {% for data in operation_data %}
-                    <option value="{{ data.lingOp }}">{{ data.lingOp }}</option>
+                    <option value="{{ data.lingOp }}" {% if data.lingOp == request.form['operation'] %} selected {% endif %}>{{ data.lingOp }}</option>
                 {% endfor %}
             </select>
         </div>
 
 
         <div class="input-group">
-            <span class="input-group-addon">Bitte wähle eine Position an der die Operation ist: </span>
+            <span class="input-group-addon">Bitte wähle eine Position, an der die Operation ist: </span>
             <select name="operation_position" class="selectpicker form-control" id="operation_position">
-                {% for o in position_data %}
-                    <option value="{{ o.lingPos }}">{{ o.lingPos }}</option>
+                {% for data in position_data %}
+                    <option value="{{ data.lingPos }}" {% if data.lingPos == request.form['operation_position'] %} selected {% endif %}>{{ data.lingPos }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -45,8 +51,8 @@
         <div class="input-group">
             <span class="input-group-addon">Welches Element ist davon betroffen: </span>
             <select name="ling_element" class="selectpicker form-control" id="ling_element">
-                {% for o in ling_element_data %}
-                    <option value="{{ o.lingElem }}">{{ o.lingElem }}</option>
+                {% for data in ling_element_data %}
+                    <option value="{{ data.lingElem }}" {% if data.lingElem == request.form['ling_element'] %} selected {% endif %}>{{ data.lingElem }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -54,36 +60,37 @@
         <div class="input-group">
             <span class="input-group-addon">In welcher Form findet die Operation statt: </span>
             <select name="ling_form" class="selectpicker form-control" id="ling_form">
-                {% for o in ling_form_data %}
-                    <option value="{{ o.lingForm }}">{{ o.lingForm }}</option>
+                {% for data in ling_form_data %}
+            <option value="{{ data.lingForm }}" {% if data.lingForm == request.form['ling_form'] %} selected {% endif %}>{{ data.lingForm }}</option>
+            {% endfor %}
+
+{#                {% for o in ling_form_data %}#}
+{#                    <option value="{{ o.lingForm }}">{{ o.lingForm }}</option>#}
+{#                {% endfor %}#}
+            </select>
+        </div>
+          <div class="input-group">
+            <span class="input-group-addon">In welchem Bereich kommt die Figur vor? </span>
+            <select name="ling_area" class="selectpicker form-control" id="ling_area">
+                {% for data in ling_area_data %}
+                    <option value="{{ data.lingArea }}" {% if data.lingArea == request.form['ling_area'] %} selected {% endif %}>{{ data.lingArea }}</option>
                 {% endfor %}
             </select>
         </div>
-
-
-
-        <!-- <div class="form-group">
-            <label for="operation">Operation</label>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        value="{{ request.form['operation'] }}">
-                    Wähle die Operation
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Hinzufügung</a>
-                    <a class="dropdown-item" href="#">Wiederholung</a>
-                    <a class="dropdown-item" href="#">Weglassen</a>
-                    <a class="dropdown-item" href="#">Nichts davon</a>
-                </div>
-            </div>
-        </div>
-    -->
 
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
 
     </form>
+
+
+
+ <div class="container">
+ {{ ergebnis }}
+    {% for row in result %}
+        <div class="alert alert-primary">{{ row }}</div>
+    {% endfor %}
+</div>
 
 {% endblock %}

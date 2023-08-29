@@ -1,9 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Welcome to FyF, where you can find the perfect rhetorical figure for you. {% endblock %}</h1>
+    <h1> Willkommen bei FyF (Find you Figure)! Finde die perfekte rhetorische Figur für dich!</h1>
 
-    <p>Click <a href="{{ url_for("fyfpage") }}">here</a> to submit a text and find the figure in it</p>
+    <h3>Finde den Namen einer Figur</h3>
+    <p>Klicke <a href="{{ url_for("fyfpage") }}">hier</a>, um den Namen einer rhetorischen Figur zu finden. Du kannst
+        entweder einen eigenen Text eingeben, oder Text aus der Datenbank wählen, falls vorhanden.</p>
 
+    <h3>Mach deinen Schreibstil interessanter</h3>
+    <p>Suchst du eine Figur mit einem bestimmten Effekt auf dein Publikum (z.B. einprägsamer, überzeugend, etc.)?
+        Klicke <a href="{{ url_for("function") }}">hier</a>, um nach diesen Figuren zu suchen.</p>
+
+    <h3>Gib nur Text ein</h3>
+    <p>Du hast einen Text, in dem du eine Figur vermutest, möchtest aber gerade nicht nach dem Namen suchen?
+        Gib einfach den Text und Quellen <a href="{{ url_for("create") }}">hier</a> ein. </p>
+
+    <h3>Du hilfst der Forschung!</h3>
+    <p>Wozu wurde diese Seite gebaut? Finde <a href="{{ url_for("about") }}">hier</a> mehr Informationen darüber. </p>
 
 {% endblock %}
