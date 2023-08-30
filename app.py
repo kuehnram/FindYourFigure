@@ -1,13 +1,10 @@
 """
-
-
-
-
 Add Internationalization
 https://medium.com/@nicolas_84494/flask-create-a-multilingual-web-application-with-language-specific-urls-5d994344f5fd
 https://phrase.com/blog/posts/flask-app-tutorial-i18n/
 
 """
+import random
 import re
 from flask import Flask, render_template, request, url_for, redirect, flash
 import sqlite3
@@ -37,7 +34,7 @@ def index():
     return render_template('index.html')
 
 
-# Get all elements from a cetain category from the ontology as options in the dropdown menu
+# Get all elements from a certain category from the ontology as options in the dropdown menu
 def query_list_elements(query: str, key_name: str) -> list:
     result = g.query(query)
     data = []
@@ -51,7 +48,6 @@ def query_list_elements(query: str, key_name: str) -> list:
 
 # Build first the options for the dropdowns from where the users can choose matching properties.
 # Based on those properties, build a query for the ontology.
-# Todo Return the matching figures + definition + examples to the users.
 @app.route('/fyfpage', methods=('POST', "GET"))
 def fyfpage():
     # data = [{'name': 'red'}, {'name': 'green'}, {'name': 'blue'}]
@@ -121,20 +117,6 @@ def fyfpage():
         ling_form = ling_form.title().replace(" ", "") if ling_form != nothing else nothing
         ling_area = request.form['ling_area']
 
-        test = f"""
-        SELECT ?label
-        WHERE {{
-          ?class rdf:type owl:Class ;
-                rdfs:label ?label ;
-                rdfs:subClassOf [
-                  rdf:type owl:Restriction ;
-                  owl:onProperty webprotege:betroffenensElement ;
-                  owl:someValuesFrom webprotege:{ling_element} ;
-                ]
-                .
-        }}
-        """
-
         ling_elem_block = f"""rdfs:subClassOf [
                       rdf:type owl:Restriction ;
                       owl:onProperty webprotege:betroffenensElement ;
@@ -177,30 +159,36 @@ def fyfpage():
                    .
             }}
             """
-        print(figure_query)
-        result = g.query(figure_query)
-        figure_list = []
 
-        # < owl: onProperty
-        # rdf: resource = "http://webprotege.stanford.edu/hatDefinition" / >
-        # < owl: hasValue
-        # rdf: resource = "http://webprotege.stanford.edu/DefinitionAnapher1" / >
-        for row in result:
-            row = re.search(r"('.*?')", str(row)).group(1)
-            def_query = f""" SELECT ?value
-                             WHERE {{
-                                ?class rdf:type owl:Class ;
-                                rdfs:label {row}@de  ;
-                                rdfs:subClassOf [
-                                owl:onProperty webprotege:hatDefinition ;
-                                owl:hasValue ?value ;
-                             ] .    }}
-                            """
-            def_query_result = g.query(def_query)
-            for definition in def_query_result:
-                pass # todo get definitions
+        test = f"""
+              SELECT ?label
+              WHERE {{
+                ?class rdf:type owl:Class ;
+                      rdfs:label ?label ;
+                      rdfs:subClassOf [
+                        rdf:type owl:Restriction ;
+                        owl:onProperty webprotege:betroffenensElement ;
+                        owl:someValuesFrom webprotege:Wortelement ;
+                      ] ;
+                      rdfs:subClassOf [
+                        rdf:type owl:Restriction ;
+                        owl:onProperty webprotege:hatOperationsform ;
+                        owl:someValuesFrom webprotege:SelbeForm ;
+                       ] .
+              }}
+              """
 
-            print(row)  # ANAPHORA!
+        result = g.query(test)
+        result = parse_figure_name(result)
+        figure_infos = []
+        figure_info = {"figure_name": "",
+                       "definitions": [],
+                       "examples": []}
+        for figure_name in result:
+            figure_info["figure_name"] = figure_name
+            figure_info["definitions"] = get_figure_definition(figure_name)
+            figure_info["examples"] = get_examples(figure_name)
+            figure_infos.append(figure_info)
         if not text:
             flash('Bitte gib einen Text ein!')
         else:
@@ -208,13 +196,124 @@ def fyfpage():
                                    operation_data=ling_operation_data,
                                    position_data=ling_pos_data, ling_form_data=ling_form_data,
                                    ling_area_data=ling_area_data, ergebnis="Folgende Figuren wurden gefunden:",
-                                   result=result)
+                                   result=figure_infos)
 
     # conn = get_db_connection()
     # posts = conn.execute('SELECT * FROM posts').fetchall()
     # conn.close()
     return render_template('fyfpage.html', ling_element_data=ling_element_data, operation_data=ling_operation_data,
                            position_data=ling_pos_data, ling_form_data=ling_form_data, ling_area_data=ling_area_data)
+
+
+def parse_figure_name(result):
+    figure_name_list = []
+    for figure_name in result:
+        label_literal = figure_name['label']
+        label_value = label_literal.value
+        figure_name_list.append(label_value)
+    # for row in result:
+    #     figure_name = re.search(r"('(.*?)')", str(row)).group(2)
+    #     figure_name_list.append(figure_name)
+    return figure_name_list
+
+
+def get_figure_definition(figure_name):
+    definitions = []
+    def_query = f""" SELECT ?value
+                     WHERE {{
+                        ?class rdf:type owl:Class ;
+                        rdfs:label "{figure_name}"@de  ;
+                        rdfs:subClassOf [
+                        owl:onProperty webprotege:hatDefinition ;
+                        owl:hasValue ?value ;
+                     ] .    }}
+                    """
+    def_query_result = g.query(def_query)
+    for result in def_query_result:
+        value_uri = result['value'].toPython()
+        def_text_query = f""" SELECT ?definitionText
+                 WHERE {{
+                      <{value_uri}> webprotege:hatDefinitionsText ?definitionText .
+                     }}
+                """
+
+        def_text_result = g.query(def_text_query)
+        for def_text in def_text_result:
+            definition_entry = {'text': "",
+                                'author': ""}
+            label_literal = def_text['definitionText']
+            definition_entry['text'] = label_literal.value
+            def_author_query = f""" SELECT ?definitionAutor
+                 WHERE {{
+                      <{value_uri}> webprotege:istBeispielAutor ?definitionAutor .
+                     }}
+                """
+            def_author_result = g.query(def_author_query)
+            for def_author in def_author_result:
+                label_literal = def_author['definitionAutor']
+                label_value = label_literal.value
+                definition_entry['author'] = label_literal.value
+                definitions.append(definition_entry)
+
+    return definitions
+
+
+def get_examples(figure_name):
+    examples = []
+    example_query = f""" SELECT ?instance ?author ?source ?example
+                        WHERE {{
+                          ?instance rdf:type webprotege:{figure_name} .
+                          OPTIONAL {{ ?instance webprotege:istBeispielAutor ?author . }}
+                          OPTIONAL {{ ?instance webprotege:istBeispielQuelle ?source . }}
+                          OPTIONAL {{ ?instance gr:istBeispiel ?example . }}
+                            }}
+                        """
+    example_query_result = g.query(example_query)
+    for res in example_query_result:
+        example_entry = {'example_text': "",
+                         'example_source': "",
+                         'example_author': ""
+                         }
+        ex_text = res['example']
+        example_entry["example_text"] = ex_text.value
+        ex_source = res["source"]
+        example_entry["example_source"] = ex_source.value
+        ex_autor = res["author"]
+        example_entry["example_author"] = ex_autor.value
+        examples.append(example_entry)
+    return examples
+
+
+# Retrieves a random examples from the database which is not yet annotated/connected with a figure via the
+# table contains_figure. Think if better to check first which examples are in db then generate or create random numbers
+# and test over and over if example is not annotated. Maybe create another table/column for it (e.g. annotated?)?
+# TODO: place button right, check that example is not yet connected with another figure (table contains_figure)
+#  and display result in the textfields
+@app.route("/get_random_example", methods=['POST', 'GET'])
+def get_random_example():
+    print("TEEEST")
+    connection = sqlite3.connect('database.db')
+    cursor = connection.cursor()
+
+    # Get the total number of entries in the table
+    cursor.execute("SELECT COUNT(*) FROM examples")
+    total_entries = cursor.fetchone()[0]
+
+    # Generate a random offset within the total number of entries
+    random_offset = random.randint(0, total_entries - 1)
+
+    # Retrieve a random entry using LIMIT and OFFSET
+    cursor.execute("SELECT * FROM examples LIMIT 1 OFFSET ?", (random_offset,))
+    random_entry = cursor.fetchone()
+
+    # Close the connection
+    connection.close()
+
+    # Now 'random_entry' contains the randomly retrieved entry
+    print(random_entry)
+    if random_entry is None:
+        abort(404)
+    return render_template("fyfpage.html", random_entry=random_entry)
 
 
 @app.route('/<int:post_id>')
@@ -243,7 +342,7 @@ def about():
     return render_template("about.html")
 
 
-@app.route('/create', methods=('POST', "GET"))
+@app.route('/create', methods=('POST', 'GET'))
 def create():
     if request.method == 'POST':
         author = request.form['author']

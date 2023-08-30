@@ -2,19 +2,26 @@
 
 {% block content %}
     <h1>Finde deine Figur (FyF)!</h1>
-        <p>Du vermutest eine rhetorische Figur in deinem Text, aber du weißt nicht, wie sie heißt oder wie sie auf die Leser wirk?
-            Finde es hier heraus! Gib dazu einfach folgende Informationen an. Wortelement und Satz für Anapher
+    <p>Du vermutest eine rhetorische Figur in deinem Text, aber du weißt nicht, wie sie heißt oder wie sie auf die Leser
+        wirk?
+        Finde es hier heraus! Gib dazu einfach folgende Informationen an. Wortelement und Satz für Anapher
 
 
     <form method="post">
         <div class="form-group">
             <label for="text">Text*</label>
-            <textarea name="text" placeholder="Gebe einen Text mit einer rhetorischen Figur ein!"
+            <textarea name="text" placeholder="Gib einen Text mit einer rhetorischen Figur ein!"
                       class="form-control">{{ request.form['text'] }}</textarea>
+            {#        </div>#}
+            {#        <div class="form-group" >#}
+            {#            <form action="/get_db_example" method="post">#}
+            <button type="button" class="btn btn-success float-right" id="get-example-button">Oder Text aus Datenbank doesnt work
+            </button>
+
+            {#</form>#}
+
         </div>
-        <div class="form-group">
-            <button type="button" class="btn btn-success">Oder Text aus Datenbank</button>
-        </div>
+
 
         <div class="form-group">
             <label for="author">Autor</label>
@@ -33,7 +40,8 @@
             <span class="input-group-addon">Bitte wähle, welche Operation stattfindet: </span>
             <select name="operation" class="selectpicker form-control" id="operation">
                 {% for data in operation_data %}
-                    <option value="{{ data.lingOp }}" {% if data.lingOp == request.form['operation'] %} selected {% endif %}>{{ data.lingOp }}</option>
+                    <option value="{{ data.lingOp }}" {% if data.lingOp == request.form['operation'] %}
+                            selected {% endif %}>{{ data.lingOp }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -43,7 +51,8 @@
             <span class="input-group-addon">Bitte wähle eine Position, an der die Operation ist: </span>
             <select name="operation_position" class="selectpicker form-control" id="operation_position">
                 {% for data in position_data %}
-                    <option value="{{ data.lingPos }}" {% if data.lingPos == request.form['operation_position'] %} selected {% endif %}>{{ data.lingPos }}</option>
+                    <option value="{{ data.lingPos }}" {% if data.lingPos == request.form['operation_position'] %}
+                            selected {% endif %}>{{ data.lingPos }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -52,7 +61,8 @@
             <span class="input-group-addon">Welches Element ist davon betroffen: </span>
             <select name="ling_element" class="selectpicker form-control" id="ling_element">
                 {% for data in ling_element_data %}
-                    <option value="{{ data.lingElem }}" {% if data.lingElem == request.form['ling_element'] %} selected {% endif %}>{{ data.lingElem }}</option>
+                    <option value="{{ data.lingElem }}" {% if data.lingElem == request.form['ling_element'] %}
+                            selected {% endif %}>{{ data.lingElem }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -61,19 +71,21 @@
             <span class="input-group-addon">In welcher Form findet die Operation statt: </span>
             <select name="ling_form" class="selectpicker form-control" id="ling_form">
                 {% for data in ling_form_data %}
-            <option value="{{ data.lingForm }}" {% if data.lingForm == request.form['ling_form'] %} selected {% endif %}>{{ data.lingForm }}</option>
-            {% endfor %}
+                    <option value="{{ data.lingForm }}" {% if data.lingForm == request.form['ling_form'] %}
+                            selected {% endif %}>{{ data.lingForm }}</option>
+                {% endfor %}
 
-{#                {% for o in ling_form_data %}#}
-{#                    <option value="{{ o.lingForm }}">{{ o.lingForm }}</option>#}
-{#                {% endfor %}#}
+                {#                {% for o in ling_form_data %}#}
+                {#                    <option value="{{ o.lingForm }}">{{ o.lingForm }}</option>#}
+                {#                {% endfor %}#}
             </select>
         </div>
-          <div class="input-group">
+        <div class="input-group">
             <span class="input-group-addon">In welchem Bereich kommt die Figur vor? </span>
             <select name="ling_area" class="selectpicker form-control" id="ling_area">
                 {% for data in ling_area_data %}
-                    <option value="{{ data.lingArea }}" {% if data.lingArea == request.form['ling_area'] %} selected {% endif %}>{{ data.lingArea }}</option>
+                    <option value="{{ data.lingArea }}" {% if data.lingArea == request.form['ling_area'] %}
+                            selected {% endif %}>{{ data.lingArea }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -84,13 +96,30 @@
 
     </form>
 
+    <form action="/get_random_example" method="post">
+    <button name="forwardBtn" type="submit">Text from db</button>
+        </form>
 
 
- <div class="container">
- {{ ergebnis }}
-    {% for row in result %}
-        <div class="alert alert-primary">{{ row }}</div>
-    {% endfor %}
-</div>
+
+
+    <div class="container">
+        {{ ergebnis }}
+        {% for row in result %}
+            <div class="alert alert-primary"><b>{{ row["figure_name"] }}</b>
+                <br>
+                {% for ro in row["definitions"] %}
+                    {{ ro["text"] }} - {{ ro["author"] }}
+                {% endfor %}
+
+                <br><br>
+                Beispiele: <br>
+                {% for ex in row["examples"] %}
+                    {{ ex["example_text"] }} - <em>{{ ex["example_source"] }}: {{ ex["example_author"] }} </em><br/>
+                {% endfor %}
+                {#                {{ row["examples"] }}#}
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}
