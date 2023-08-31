@@ -35,14 +35,16 @@ def index():
 
 
 # Get all elements from a certain category from the ontology as options in the dropdown menu
-def query_list_elements(query: str, key_name: str) -> list:
+# how output looks for example: data = [{"figure": "Anapher"}, {"figure": "Epipher"}, {"figure": "Symploke"}]
+def query_list_elements(query: str, key_name: str, no_idea: bool) -> list:
     result = g.query(query)
     data = []
     for row in result:
         value_element = row[0]
         data.append({key_name: str(value_element)})
     # add "nothing/ i don't know as option
-    data.append({key_name: "Keins davon/Weiß nicht"})
+    if no_idea:
+        data.append({key_name: "Keins davon/Weiß nicht"})
     return data
 
 
@@ -61,7 +63,7 @@ def fyfpage():
                 rdfs:label ?subclassLabel .
     }
       """
-    ling_pos_data = query_list_elements(query=ling_pos_query, key_name="lingPos")
+    ling_pos_data = query_list_elements(query=ling_pos_query, key_name="lingPos", no_idea=True)
 
     ling_operation_query = """
     SELECT ?subclassLabel
@@ -71,7 +73,7 @@ def fyfpage():
                 rdfs:label ?subclassLabel .
     }
     """
-    ling_operation_data = query_list_elements(query=ling_operation_query, key_name="lingOp")
+    ling_operation_data = query_list_elements(query=ling_operation_query, key_name="lingOp", no_idea=True)
 
     ling_element_query = """
     SELECT ?subclassLabel
@@ -81,7 +83,7 @@ def fyfpage():
                 rdfs:label ?subclassLabel .
     }
     """
-    ling_element_data = query_list_elements(query=ling_element_query, key_name="lingElem")
+    ling_element_data = query_list_elements(query=ling_element_query, key_name="lingElem", no_idea=True)
 
     ling_form_query = """
         SELECT ?subclassLabel
@@ -91,7 +93,7 @@ def fyfpage():
                     rdfs:label ?subclassLabel .
         }
         """
-    ling_form_data = query_list_elements(query=ling_form_query, key_name="lingForm")
+    ling_form_data = query_list_elements(query=ling_form_query, key_name="lingForm", no_idea=True)
 
     ling_area_query = """
      SELECT ?subclassLabel
@@ -101,7 +103,7 @@ def fyfpage():
                     rdfs:label ?subclassLabel .
         }
      """
-    ling_area_data = query_list_elements(query=ling_area_query, key_name="lingArea")
+    ling_area_data = query_list_elements(query=ling_area_query, key_name="lingArea", no_idea=True)
 
     if request.method == 'POST':
         nothing = "Keins davon/Weiß nicht"
@@ -205,7 +207,7 @@ def fyfpage():
                            position_data=ling_pos_data, ling_form_data=ling_form_data, ling_area_data=ling_area_data)
 
 
-def parse_figure_name(result):
+def parse_figure_name(result: list) -> list:
     figure_name_list = []
     for figure_name in result:
         label_literal = figure_name['label']
@@ -217,7 +219,7 @@ def parse_figure_name(result):
     return figure_name_list
 
 
-def get_figure_definition(figure_name):
+def get_figure_definition(figure_name: str) -> list:
     definitions = []
     def_query = f""" SELECT ?value
                      WHERE {{
@@ -314,6 +316,32 @@ def get_random_example():
     if random_entry is None:
         abort(404)
     return render_template("fyfpage.html", random_entry=random_entry)
+
+
+@app.route("/figure_information", methods=['POST', 'GET'])
+def figure_information():
+    figure_query = """SELECT ?label
+                        WHERE {
+                          ?subclass rdf:type owl:Class ;
+                                    rdfs:subClassOf gr:RhetorischeFigur ;
+                                    rdfs:label ?label
+                            }
+                            """
+    figure_data = query_list_elements(query=figure_query, key_name="figure", no_idea=False)
+
+    if request.method == 'POST':
+        figure = request.form['figure']
+        figure_detail_infos = []
+        figure_detail_info = {"figure_name": figure, "definitions": get_figure_definition(figure),
+                              "examples": get_examples(figure), "position": "Anfang",
+                              "rhetoricalClass": "Betonungsfigur"}  # etc...
+        figure_detail_infos.append(figure_detail_info)
+        print(figure_detail_infos)
+        figure_info_query = """"""
+        return render_template("figure_info.html", figure_names=figure_data, ergebnis="Hier sind alle Infos zu dieser Figur:",
+                               figure_detail_infos=figure_detail_infos)
+
+    return render_template("figure_info.html", figure_names=figure_data)
 
 
 @app.route('/<int:post_id>')

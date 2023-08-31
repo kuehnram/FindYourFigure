@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Figuren im Detail</h1>
+
+    <p>Sieh dir detaillierte Infos zu allen Figuren an </p>
+     <form method="post">
+
+        <div class="input-group">
+            <span class="input-group-addon">Bitte wähle die Figur: </span>
+            <label for="figure"></label><select name="figure" class="selectpicker form-control" id="figure">
+                {% for data in figure_names %}
+                    <option value="{{ data.figure }}" {% if data.figure == request.form['figure'] %}
+                            selected {% endif %}>{{ data.figure }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Zeige Infos!</button>
+        </div>
+
+    </form>
+
+    <div class="container">
+        {{ ergebnis }}
+        {% for row in figure_detail_infos %}
+            <div class="alert alert-primary"><b>{{ row["figure_name"] }}</b>
+                <br>
+                {% for ro in row["definitions"] %}
+                    {{ ro["text"] }} - {{ ro["author"] }}
+                {% endfor %}
+
+                <br><br>
+                Beispiele: <br>
+                {% for ex in row["examples"] %}
+                    {{ ex["example_text"] }} - <em>{{ ex["example_source"] }}: {{ ex["example_author"] }} </em><br/>
+                {% endfor %}
+                {#                {{ row["examples"] }}#}
+            Position: {{ row["position"] }} <br>
+            Rhetorische Klasse: {{ row["rhetoricalClass"] }}
+            </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

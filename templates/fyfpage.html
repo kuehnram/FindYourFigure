@@ -7,16 +7,17 @@
         Finde es hier heraus! Gib dazu einfach folgende Informationen an. Wortelement und Satz für Anapher
 
 
-    <form method="post">
+   <form method="post">
         <div class="form-group">
-            <label for="text">Text*</label>
+            <label for="text" style="display: block">Text*
             <textarea name="text" placeholder="Gib einen Text mit einer rhetorischen Figur ein!"
                       class="form-control">{{ request.form['text'] }}</textarea>
             {#        </div>#}
             {#        <div class="form-group" >#}
             {#            <form action="/get_db_example" method="post">#}
-            <button type="button" class="btn btn-success float-right" id="get-example-button">Oder Text aus Datenbank doesnt work
+            <button type="button" class="btn btn-success float-right" id="get-example-button">Oder Text aus Datenbank doesnt work yet
             </button>
+                </label>
 
             {#</form>#}
 
@@ -24,21 +25,21 @@
 
 
         <div class="form-group">
-            <label for="author">Autor</label>
-            <input type="text" name="author"
-                   placeholder="Vorname Nachname" class="form-control"
-                   value="{{ request.form['author'] }}"></input>
+            <label for="author" style="display: block">Autor
+                <input type="text" name="author"
+                       placeholder="Vorname Nachname" class="form-control"
+                       value="{{ request.form['author'] }}"></label>
         </div>
         <div class="form-group">
-            <label for="source">Quelle</label>
-            <input type="source" name="source"
+            <label for="source" style="display: block">Quelle
+            <input type="text" name="source"
                    placeholder="Quelle/Buch/Artikel" class="form-control"
-                   value="{{ request.form['source'] }}"></input>
+                   value="{{ request.form['source'] }}"></label>
         </div>
 
         <div class="input-group">
             <span class="input-group-addon">Bitte wähle, welche Operation stattfindet: </span>
-            <select name="operation" class="selectpicker form-control" id="operation">
+            <label for="operation"></label><select name="operation" class="selectpicker form-control" id="operation">
                 {% for data in operation_data %}
                     <option value="{{ data.lingOp }}" {% if data.lingOp == request.form['operation'] %}
                             selected {% endif %}>{{ data.lingOp }}</option>
@@ -49,7 +50,7 @@
 
         <div class="input-group">
             <span class="input-group-addon">Bitte wähle eine Position, an der die Operation ist: </span>
-            <select name="operation_position" class="selectpicker form-control" id="operation_position">
+            <label for="operation_position"></label><select name="operation_position" class="selectpicker form-control" id="operation_position">
                 {% for data in position_data %}
                     <option value="{{ data.lingPos }}" {% if data.lingPos == request.form['operation_position'] %}
                             selected {% endif %}>{{ data.lingPos }}</option>
@@ -59,7 +60,7 @@
 
         <div class="input-group">
             <span class="input-group-addon">Welches Element ist davon betroffen: </span>
-            <select name="ling_element" class="selectpicker form-control" id="ling_element">
+            <label for="ling_element"></label><select name="ling_element" class="selectpicker form-control" id="ling_element">
                 {% for data in ling_element_data %}
                     <option value="{{ data.lingElem }}" {% if data.lingElem == request.form['ling_element'] %}
                             selected {% endif %}>{{ data.lingElem }}</option>
@@ -69,7 +70,7 @@
 
         <div class="input-group">
             <span class="input-group-addon">In welcher Form findet die Operation statt: </span>
-            <select name="ling_form" class="selectpicker form-control" id="ling_form">
+            <label for="ling_form"></label><select name="ling_form" class="selectpicker form-control" id="ling_form">
                 {% for data in ling_form_data %}
                     <option value="{{ data.lingForm }}" {% if data.lingForm == request.form['ling_form'] %}
                             selected {% endif %}>{{ data.lingForm }}</option>
@@ -82,7 +83,7 @@
         </div>
         <div class="input-group">
             <span class="input-group-addon">In welchem Bereich kommt die Figur vor? </span>
-            <select name="ling_area" class="selectpicker form-control" id="ling_area">
+            <label for="ling_area"></label><select name="ling_area" class="selectpicker form-control" id="ling_area">
                 {% for data in ling_area_data %}
                     <option value="{{ data.lingArea }}" {% if data.lingArea == request.form['ling_area'] %}
                             selected {% endif %}>{{ data.lingArea }}</option>
