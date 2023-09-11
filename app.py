@@ -207,7 +207,7 @@ def fyfpage():
                            position_data=ling_pos_data, ling_form_data=ling_form_data, ling_area_data=ling_area_data)
 
 
-def parse_figure_name(result: list) -> list:
+def parse_figure_name(result) -> list:
     figure_name_list = []
     for figure_name in result:
         label_literal = figure_name['label']
