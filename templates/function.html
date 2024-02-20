@@ -2,27 +2,37 @@
 
 {% block content %}
     <h1>Finde Figuren, die eine bestimmte Funktion erfüllen</h1>
-    <p>Du willst deine Texte oder Reden interessanter machen, aber weißt nicht, welche rhetorische Figur du dafür nutzen sollst?
-        Finde es hier heraus! Wähle einfach eine Funktion, und sieh dir die Vorschläge an, welche Figuren diese Funktion erfüllen.
+    <p>Du willst deine Texte oder Reden interessanter machen, aber weißt nicht, welche rhetorische Figur du dafür nutzen
+        sollst?
+        Finde es hier heraus! Wähle einfach eine Funktion, und sieh dir die Vorschläge an, welche Figuren diese Funktion
+        erfüllen.
 
 
 
-     <form method="post">
+    <form method="post">
 
-        <div class="input-group">
-            <span class="input-group-addon">Bitte wähle, welche Funktion die Figur erfüllen soll: </span>
-            <label for="function"></label><select name="function" class="selectpicker form-control" id="function">
-                {% for data in function_data %}
-                    <option value="{{ data.function }}" {% if data.function == request.form['function'] %}
-                            selected {% endif %}>{{ data.function }}</option>
-                {% endfor %}
-            </select>
+    <div class="input-group">
+        <span class="input-group-addon">Bitte wähle, welche Funktion die Figur haben soll: </span>
+        <label for="function"></label><select name="function" class="selectpicker form-control" id="function">
+        {% for data in function_data %}
+            <option value="{{ data.function }}" {% if data.function == request.form['function'] %}
+                    selected {% endif %}>{{ data.function }}</option>
+        {% endfor %}
+    </select>
+    </div>
+    <form method="post">
+        <div class="form-group">
+            <label for="text" style="display: block">Text, der verbessert werden soll
+                <textarea name="text" placeholder="Gib einen Text mit einer rhetorischen Figur ein!"
+                          class="form-control">{{ request.form['text'] }}</textarea>
+            </label>
+            {#</form>#}
         </div>
-
+    </form>
 
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Text verbessern!</button>
         </div>
 
     </form>

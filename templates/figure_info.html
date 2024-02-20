@@ -34,9 +34,9 @@
                 <br><br>
                 Beispiele: <br>
                 {% for ex in row["examples"] %}
-                    {{ ex["example_text"] }} - <em>{{ ex["example_source"] }}: {{ ex["example_author"] }} </em><br/>
+                    <b>{{ ex["example_text"] }}</b> - {%  if ex["example_source"] %} <em> {{ex["example_source"] }} {% endif %} {% if ex["example_author"] %}: {{ ex["example_author"] }} {% endif %} </em><br/>
                 {% endfor %}
-                {#                {{ row["examples"] }}#}
+
             Position: {{ row["position"] }} <br>
             Rhetorische Klasse: {{ row["rhetoricalClass"] }}
             </div>

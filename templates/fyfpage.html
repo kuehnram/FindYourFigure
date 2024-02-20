@@ -15,15 +15,20 @@
                 {#        </div>#}
                 {#        <div class="form-group" >#}
                 {#            <form action="/get_db_example" method="post">#}
-                <button type="button" class="btn btn-success float-right" id="get-example-button">Oder Text aus
+                <button type="button" class="btn btn-success float-right" id="get-example-button">Oder Beispiel aus
                     Datenbank
                 </button>
             </label>
-
             {#</form>#}
-
         </div>
 
+        <div class="form-group">
+            <label for="text" style="display: block">Kontext
+                <textarea name="text"
+                          placeholder="Oft hilft es, wenn du einige Sätze vorher angibst, da Kontext hilfreich sein kann."
+                          class="form-control">{{ request.form['context'] }}</textarea>
+            </label>
+        </div>
 
         <div class="form-group">
             <label for="author" style="display: block">Autor
@@ -34,7 +39,7 @@
         <div class="form-group">
             <label for="source" style="display: block">Quelle
                 <input type="text" name="source"
-                       placeholder="Quelle/Buch/Artikel" class="form-control"
+                       placeholder="Name des Buchs/Titel des Artikels/etc." class="form-control"
                        value="{{ request.form['source'] }}"></label>
         </div>
 
@@ -95,7 +100,7 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Absenden</button>
         </div>
 
     </form>
@@ -107,24 +112,24 @@
 
 
 
-    <div class="container">
-        {{ ergebnis }}
-        {% for row in result %}
-            <div class="alert alert-primary"><b>{{ row["figure_name"] }}</b>
-                <br>
-                {% for ro in row["definitions"] %}
-                    {{ ro["text"] }} - {{ ro["author"] }}
-                {% endfor %}
-
-                <br><br>
-                Beispiele: <br>
-                {% for ex in row["examples"] %}
-                    {{ ex["example_text"] }} - <em>{{ ex["example_source"] }}: {{ ex["example_author"] }} </em><br/>
-                {% endfor %}
-                {#                {{ row["examples"] }}#}
-            </div>
-        {% endfor %}
-    </div>
+    {#    <div class="container">#}
+    {#        {{ ergebnis }}#}
+    {#        {% for row in result %}#}
+    {#            <div class="alert alert-primary"><b>{{ row["figure_name"] }}</b>#}
+    {#                <br>#}
+    {#                {% for ro in row["definitions"] %}#}
+    {#                    {{ ro["text"] }} - {{ ro["author"] }}#}
+    {#                {% endfor %}#}
+    {##}
+    {#                <br><br>#}
+    {#                Beispiele: <br>#}
+    {#                {% for ex in row["examples"] %}#}
+    {#                    {{ ex["example_text"] }} - <em>{{ ex["example_source"] }}: {{ ex["example_author"] }} </em><br/>#}
+    {#                {% endfor %}#}
+    {#                {{ row["examples"] }}#}
+    {#            </div>#}
+    {#        {% endfor %}#}
+    {#    </div>#}
 
 
     <div class="container">
@@ -150,11 +155,32 @@
                     {#                {{ row["examples"] }}#}
                 </div>
             </div>
+
         {% endfor %}
+    </div>
 
 
-    </div>
-    </div>
+        <form method="post">
+            <div class="form-group">
+                <p>Alternativ kannst du auch unser Sprachmodell nutzen! Beschreibe die Charakteristiken der Figur hier
+                    in
+                    natürlicher Sprache.</p>
+                <label for="text" style="display: block">Frag das Sprachmodell
+                    <textarea name="text" placeholder="z.B. 'In dem Satz wiederholen sich die Anfangsbuchstaben jedes Wortes.
+                Wie heißt diese rhetorische Figur?'"
+                              class="form-control">{{ request.form['llmtext'] }}</textarea>
+                </label>
+                {#</form>#}
+            </div>
+
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Figur(en) zuordnen und speichern</button>
+            </div>
+        </form>
+
+
+
 
 
 

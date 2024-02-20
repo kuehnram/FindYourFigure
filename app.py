@@ -11,8 +11,11 @@ import sqlite3
 from werkzeug.exceptions import abort
 import rdflib
 
+
 g = rdflib.Graph()
-g.parse('C:/Users/kuehn21/PycharmProjects/GrhootRestructured/grhoot.owl', format='application/rdf+xml')
+# g.parse('C:/Users/kuehn21/PycharmProjects/GrhootRestructured/grhoot.owl', format='application/rdf+xml')
+g.parse('C:/Users/kuehn21/PycharmProjects/RAGTutorial/grhootNewSmall.owl', format='application/rdf+xml')
+
 webprotege = rdflib.Namespace('http://webprotege.stanford.edu/')
 gr = rdflib.Namespace('https://ramonakuehn.de/grhoot.owl#')
 rdfs = rdflib.Namespace('http://www.w3.org/2000/01/rdf-schema#')
@@ -247,7 +250,7 @@ def get_figure_definition(figure_name: str) -> list:
             definition_entry['text'] = label_literal.value
             def_author_query = f""" SELECT ?definitionAutor
                  WHERE {{
-                      <{value_uri}> webprotege:istBeispielAutor ?definitionAutor .
+                      <{value_uri}> webprotege:istAutor ?definitionAutor .
                      }}
                 """
             def_author_result = g.query(def_author_query)
@@ -265,24 +268,22 @@ def get_examples(figure_name):
     example_query = f""" SELECT ?instance ?author ?source ?example
                         WHERE {{
                           ?instance rdf:type webprotege:{figure_name} .
-                          OPTIONAL {{ ?instance webprotege:istBeispielAutor ?author . }}
+                          OPTIONAL {{ ?instance webprotege:istAutor ?author . }}
                           OPTIONAL {{ ?instance webprotege:istBeispielQuelle ?source . }}
                           OPTIONAL {{ ?instance gr:istBeispiel ?example . }}
                             }}
                         """
     example_query_result = g.query(example_query)
     for res in example_query_result:
-        example_entry = {'example_text': "",
-                         'example_source': "",
-                         'example_author': ""
-                         }
-        ex_text = res['example']
-        example_entry["example_text"] = ex_text.value
-        ex_source = res["source"]
-        example_entry["example_source"] = ex_source.value
-        ex_autor = res["author"]
-        example_entry["example_author"] = ex_autor.value
+        example_entry = {
+            # 'instance': res['instance'].n3(),
+            'example_text': res["example"].value,  # example text is mandatory
+            'example_source': res["source"].value if res["source"] else None,
+            'example_author': res["author"].value if res["author"] else None
+        }
         examples.append(example_entry)
+
+    print(examples)
     return examples
 
 
@@ -320,14 +321,15 @@ def get_random_example():
 
 @app.route("/figure_information", methods=['POST', 'GET'])
 def figure_information():
-    figure_query = """SELECT ?label
+    figure_label_query = """SELECT ?label
                         WHERE {
                           ?subclass rdf:type owl:Class ;
                                     rdfs:subClassOf gr:RhetorischeFigur ;
                                     rdfs:label ?label
+                                    Filter (LANG(?label) = 'de')
                             }
                             """
-    figure_data = query_list_elements(query=figure_query, key_name="figure", no_idea=False)
+    figure_data = query_list_elements(query=figure_label_query, key_name="figure", no_idea=False)
 
     if request.method == 'POST':
         figure = request.form['figure']
@@ -387,33 +389,51 @@ def create():
             return redirect(url_for('index'))
     return render_template('create.html')
 
+#
+# @app.route("/<int:id>/edit", methods=("GET", "POST"))
+# def edit(id):
+#     post = get_post(id)
+#     if request.method == "POST":
+#         title = request.form["title"]
+#         content = request.form["content"]
+#         if not title:
+#             flash("Title is required!")
+#         else:
+#             conn = get_db_connection()
+#             conn.execute("UPDATE posts SET title = ?, content = ? WHERE id = ?", title, content, id)
+#             conn.commit()
+#             conn.close()
+#             return redirect(url_for("index"))
+#     return render_template("edit.html", post=post)
+#
+#
+# @app.route('/<int:id>/delete', methods=('POST',))
+# def delete(id):
+#     post = get_post(id)
+#     conn = get_db_connection()
+#     conn.execute('DELETE FROM posts WHERE id = ?', (id,))
+#     conn.commit()
+#     conn.close()
+#     flash('"{}" was successfully deleted!'.format(post['title']))
+#     return redirect(url_for('index'))
 
-@app.route("/<int:id>/edit", methods=("GET", "POST"))
-def edit(id):
-    post = get_post(id)
-    if request.method == "POST":
-        title = request.form["title"]
-        content = request.form["content"]
-        if not title:
-            flash("Title is required!")
-        else:
-            conn = get_db_connection()
-            conn.execute("UPDATE posts SET title = ?, content = ? WHERE id = ?", title, content, id)
-            conn.commit()
-            conn.close()
-            return redirect(url_for("index"))
-    return render_template("edit.html", post=post)
 
-
-@app.route('/<int:id>/delete', methods=('POST',))
-def delete(id):
-    post = get_post(id)
-    conn = get_db_connection()
-    conn.execute('DELETE FROM posts WHERE id = ?', (id,))
-    conn.commit()
-    conn.close()
-    flash('"{}" was successfully deleted!'.format(post['title']))
-    return redirect(url_for('index'))
+def get_figure_label() -> list:
+    figure_query = """SELECT ?label
+                         WHERE {
+                           ?subclass rdf:type owl:Class ;
+                                     rdfs:subClassOf gr:RhetorischeFigur ;
+                                     rdfs:label ?label
+                                     Filter (LANG(?label) = 'de')
+                             }
+                             """
+    result = g.query(figure_query)
+    data = []
+    for row in result:
+        value_element = row[0]
+        print(value_element)
+        data.append(value_element)
+    return data
 
 
 def get_db_connection():
