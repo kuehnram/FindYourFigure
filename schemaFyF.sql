@@ -15,6 +15,7 @@ CREATE TABLE annotations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     text_id INTEGER NOT NULL,
     figure_id INTEGER NOT NULL,
+    verified BOOLEAN,
     FOREIGN KEY (text_id) REFERENCES texts(id),
     FOREIGN KEY (figure_id) REFERENCES rhetorical_figures(figure_id)
 );

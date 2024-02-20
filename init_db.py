@@ -17,8 +17,12 @@ cursor = connection.cursor()
 cursor.execute("INSERT INTO texts (text, context, author, source) VALUES ('Veni, vidi, vici', '', 'Caesar', '')"
                )
 
+
 for figure in figure_labels:
     cursor.execute(f"INSERT INTO rhetorical_figures (name) VALUES ('{figure}')")  # (figure,) as a tuple?
+
+cursor.execute("INSERT INTO annotations (text_id, figure_id, verified) VALUES (1,1, TRUE)"
+               )
 
 # cur.execute(f"INSERT INTO rhetorical_figures (name) VALUES (?)",
 #             ('First Post', 'Content for the first post')
