@@ -1,0 +1,3196 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://ramonakuehn.de/grhoot#"
+     xml:base="https://ramonakuehn.de/grhoot"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:grhoot="https://ramonakuehn.de/grhoot.owl#"
+     xmlns:webprotege="http://webprotege.stanford.edu/">
+    <owl:Ontology rdf:about="https://ramonakuehn.de/grhoot"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/Quelle -->
+
+    <owl:AnnotationProperty rdf:about="http://webprotege.stanford.edu/Quelle">
+        <rdfs:label>Quelle</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#rdfs -->
+
+    <owl:AnnotationProperty rdf:about="https://ramonakuehn.de/grhoot.owl#rdfs">
+        <rdfs:label>rdfs</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#see -->
+
+    <owl:AnnotationProperty rdf:about="https://ramonakuehn.de/grhoot.owl#see">
+        <rdfs:label>see</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/betroffenensElement -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/betroffenensElement">
+        <rdfs:range rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischesElement"/>
+        <rdfs:label xml:lang="en">affected element</rdfs:label>
+        <rdfs:label xml:lang="de">betroffenes Element</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/hatDefinition -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hatDefinition">
+        <rdfs:label>hat Definition</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/hatDein -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hatDein">
+        <rdfs:label>hat Dein</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/hatOperation -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hatOperation">
+        <rdfs:label xml:lang="en">has operation</rdfs:label>
+        <rdfs:label xml:lang="de">hat Operation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/hatOperationsform -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hatOperationsform">
+        <rdfs:label xml:lang="en">has operationform</rdfs:label>
+        <rdfs:label xml:lang="de">hat Operationsform</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#WirdDurchEinAnderesElementDerMilderenBedeutungErsetzt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#WirdDurchEinAnderesElementDerMilderenBedeutungErsetzt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdErsetzt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WirdDurchEinAnderesElementDerMilderenBedeutungErsetztAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#bewegtSich -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#bewegtSich">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bewegtSichAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#einWeiteresElementAlsFrageWirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#einWeiteresElementAlsFrageWirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">einWeiteresElementAlsFrageWirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#einWeiteresElementDerEntgegengesetztenBedeutungWirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#einWeiteresElementDerEntgegengesetztenBedeutungWirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">einWeiteresElementDerEntgegengesetztenBedeutungWirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#einWeiteresElementDerNegativenBedeutungWirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#einWeiteresElementDerNegativenBedeutungWirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">einWeiteresElementDerNegativenBedeutungWirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#einWeiteresElementDerPositivenBedeutungWirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#einWeiteresElementDerPositivenBedeutungWirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">einWeiteresElementDerPositivenBedeutungWirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#einWeiteresElementDerStaerkerenBedeutungWirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#einWeiteresElementDerStaerkerenBedeutungWirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">einWeiteresElementDerStaerkerenBedeutungWirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#einWeiteresElementDerselbenSprachuebereinstimmungWirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#einWeiteresElementDerselbenSprachuebereinstimmungWirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">einWeiteresElementDerselbenSprachuebereinstimmungWirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#einWeiteresElementDeruebertragenenBedeutungWirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#einWeiteresElementDeruebertragenenBedeutungWirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">einWeiteresElementDeruebertragenenBedeutungWirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#einWeiteresElementMitDerselbenBedeutungWirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#einWeiteresElementMitDerselbenBedeutungWirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">einWeiteresElementMitDerselbenBedeutungWirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#einWeiteresElementMitUnterschiedlicherBedeutungWirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#einWeiteresElementMitUnterschiedlicherBedeutungWirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">einWeiteresElementMitUnterschiedlicherBedeutungWirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#einWeiteresElementVonLeichtererBedeutungWirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#einWeiteresElementVonLeichtererBedeutungWirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">einWeiteresElementVonLeichtererBedeutungWirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#einWeiteresElementVonaehnlicherBedeutungWirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#einWeiteresElementVonaehnlicherBedeutungWirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">einWeiteresElementVonaehnlicherBedeutungWirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#einWeiteresElementWirdAlsNegativeAntwortHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#einWeiteresElementWirdAlsNegativeAntwortHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">einWeiteresElementWirdAlsNegativeAntwortHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#einWeiteresElementWirdAlsPositiveAntwortHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#einWeiteresElementWirdAlsPositiveAntwortHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">einWeiteresElementWirdAlsPositiveAntwortHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#eineWeitereMildereNegativeBedeutungWirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#eineWeitereMildereNegativeBedeutungWirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eineWeitereMildereNegativeBedeutungWirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#eineWeitereStaerkereNegativeBedeutungWirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#eineWeitereStaerkereNegativeBedeutungWirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eineWeitereStaerkereNegativeBedeutungWirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#istEinWiederholbaresElementDerZweitenArt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#istEinWiederholbaresElementDerZweitenArt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdWiederholt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">istEinWiederholbaresElementDerZweitenArtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#istEinWiederholbaresElementDerselbenForm -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#istEinWiederholbaresElementDerselbenForm">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdWiederholt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">istEinWiederholbaresElementDerselbenFormAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#istEinWiederholbaresElementEinerAnderenBedeutung -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#istEinWiederholbaresElementEinerAnderenBedeutung">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdWiederholt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">istEinWiederholbaresElementEinerAnderenBedeutungAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#istEinWiederholbaresElementEinerAnderenForm -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#istEinWiederholbaresElementEinerAnderenForm">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdWiederholt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">istEinWiederholbaresElementEinerAnderenFormAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#istInPosition -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#istInPosition">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:range rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischePosition"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ist in Position</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:range rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeGruppe"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ist Linguistische Gruppe</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:range rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeGruppe"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#istSymmetrisch -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#istSymmetrisch">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">istSymmetrischAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#istSynonym -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#istSynonym">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">istSynonymAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#istUeberObjekt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#istUeberObjekt">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ist Ueber Objekt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#liegtImBereich -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#liegtImBereich">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:range rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischerUmfang"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">liegt im Bereich</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#trennt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#trennt">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">trenntAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#verbindet -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#verbindet">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">verbindetAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementDerAnderenArtErsetzt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementDerAnderenArtErsetzt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdErsetzt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wirdDurchEinAnderesElementDerAnderenArtErsetztAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementDerAnderenBedeutungErsetzt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementDerAnderenBedeutungErsetzt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdErsetzt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wirdDurchEinAnderesElementDerAnderenBedeutungErsetztAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementDerStaerkerenBedeutungErsetzt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementDerStaerkerenBedeutungErsetzt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdErsetzt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wirdDurchEinAnderesElementDerStaerkerenBedeutungErsetztAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementDerStaerkerenEntgegengesetztenBedeutungErsetzt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementDerStaerkerenEntgegengesetztenBedeutungErsetzt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdErsetzt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wirdDurchEinAnderesElementDerStaerkerenEntgegengesetztenBedeutungErsetztAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementDeruebertragenenBedeutungErsetzt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementDeruebertragenenBedeutungErsetzt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdErsetzt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wirdDurchEinAnderesElementDeruebertragenenBedeutungErsetztAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementEinerAnderenFormErsetzt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementEinerAnderenFormErsetzt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdErsetzt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wirdDurchEinAnderesElementEinerAnderenFormErsetztAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementEntgegengesetzterBedeutungErsetzt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementEntgegengesetzterBedeutungErsetzt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdErsetzt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wirdDurchEinAnderesElementEntgegengesetzterBedeutungErsetztAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementGleicherBedeutungErsetzt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementGleicherBedeutungErsetzt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdErsetzt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wirdDurchEinAnderesElementGleicherBedeutungErsetztAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementaehnlicherBedeutungErsetzt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#wirdDurchEinAnderesElementaehnlicherBedeutungErsetzt">
+        <rdfs:subPropertyOf rdf:resource="https://ramonakuehn.de/grhoot.owl#wirdErsetzt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wirdDurchEinAnderesElementaehnlicherBedeutungErsetztAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#wirdErsetzt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#wirdErsetzt">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wirdErsetztAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#wirdHinzugefuegt">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wirdHinzugefuegtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#wirdWeggelassen -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#wirdWeggelassen">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wirdWeggelassenAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#wirdWiederholt -->
+
+    <owl:ObjectProperty rdf:about="https://ramonakuehn.de/grhoot.owl#wirdWiederholt">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wirdWiederholtAlt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/hatDefinitionsText -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/hatDefinitionsText">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hat Definitionstext</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/istAutor -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/istAutor">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ist Autor</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/istBeispielQuelle -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/istBeispielQuelle">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ist Quelle</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#Name -->
+
+    <owl:DatatypeProperty rdf:about="https://ramonakuehn.de/grhoot.owl#Name">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hat Name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#istBeispiel -->
+
+    <owl:DatatypeProperty rdf:about="https://ramonakuehn.de/grhoot.owl#istBeispiel">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ist Beispiel</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/Abmilderung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Abmilderung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RhetorischeFunktion"/>
+        <rdfs:label>Abmilderung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/AehnlicheBedeutung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/AehnlicheBedeutung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label>Aehnliche Bedeutung</rdfs:label>
+    </owl:Class>
+    
+
+
+
+    <!-- http://webprotege.stanford.edu/Alliteration -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Alliteration">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Konsonant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wiederholung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phonologisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Betonungsfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satzobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Versobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Vers"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionAlliteration1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sr">Aliteracija</rdfs:label>
+        <rdfs:label xml:lang="de">Alliteration</rdfs:label>
+        <rdfs:label xml:lang="en">Alliteration</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Was zur hölle macht protege da?? Aus Alliteration wird immer Alliteration</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+
+    <!-- http://webprotege.stanford.edu/AlsFrage -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/AlsFrage">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label>Als Frage</rdfs:label>
+    </owl:Class>
+    
+
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/Anadiplose -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Anadiplose">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wiederholung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperationsform"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/SelbeForm"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istInPosition"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/AnfangUndEnde"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Syntaktisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Betonungsfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satzobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Versobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Paragraph"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Strophe"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionAnadiplose1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="de">Anadiplose</rdfs:label>
+        <rdfs:label xml:lang="en">Anadiplosis</rdfs:label>
+       <!-- <rdfs:label xml:lang="de">Epanastrophe</rdfs:label> -->
+        <rdfs:label xml:lang="sr">Palilogija</rdfs:label>
+    </owl:Class>
+    
+
+
+  
+
+    <!-- http://webprotege.stanford.edu/Anapher -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Anapher">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wiederholung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istInPosition"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Anfang"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Syntaktisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Betonungsfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satzobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Versobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Strophe"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionAnapher1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Anaphora</rdfs:label>
+        <rdfs:label xml:lang="de">Anapher</rdfs:label>
+        <rdfs:seeAlso xml:lang="sr">Anafora</rdfs:seeAlso>
+        <rdfs:seeAlso xml:lang="de">Anapher</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+
+
+    <!-- http://webprotege.stanford.edu/AndereArt -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/AndereArt">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label>Andere Art</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/AndereBedeutung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/AndereBedeutung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label>Andere Bedeutung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/AndereForm -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/AndereForm">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label>Andere Form</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Anfang -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Anfang">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischePosition"/>
+        <rdfs:label>Anfang</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/AnfangUndEnde -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/AnfangUndEnde">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischePosition"/>
+        <rdfs:label>Anfang und Ende</rdfs:label>
+    </owl:Class>
+    
+
+
+    
+
+   
+    
+
+
+    <!-- http://webprotege.stanford.edu/Antimetabole -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Antimetabole">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Ersetzung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperationsform"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/AndereArt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istInPosition"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/GanzeSymmetrisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Syntaktisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Konstruktionsfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Vers"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionAntimetabole1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sr">Antimetabola</rdfs:label>
+        <rdfs:label xml:lang="de">Antimetabole</rdfs:label>
+        <rdfs:label xml:lang="en">Antimetabole</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Antithese -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Antithese">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Hinzuf%C3%BCgung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperationsform"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/EntgegengesetzteBedeutung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istInPosition"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Ganze"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Semantisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Gedankenfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Vers"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionAntithese1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sr">Antiteza</rdfs:label>
+        <rdfs:label xml:lang="de">Antithese</rdfs:label>
+        <rdfs:label xml:lang="en">Antithesis</rdfs:label>
+        <rdfs:label xml:lang="en">Antitheton</rdfs:label>
+    </owl:Class>
+    
+
+
+ 
+   
+    <!-- http://webprotege.stanford.edu/Aufmerksamkeit -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Aufmerksamkeit">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RhetorischeFunktion"/>
+        <rdfs:label xml:lang="en">Attention</rdfs:label>
+        <rdfs:label xml:lang="de">Aufmerksamkeit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Betonung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Betonung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RhetorischeFunktion"/>
+        <rdfs:label xml:lang="de">Betonung</rdfs:label>
+        <rdfs:label xml:lang="en">Highlighting</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Betonungsfigur -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Betonungsfigur">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeGruppe"/>
+        <rdfs:label>Betonungsfigur</rdfs:label>
+    </owl:Class>
+    
+
+
+   
+
+    <!-- http://webprotege.stanford.edu/Buchstabenelement -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Buchstabenelement">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischesElement"/>
+        <rdfs:label>Buchstabenelement</rdfs:label>
+    </owl:Class>
+    
+
+
+
+
+    <!-- http://webprotege.stanford.edu/Chiasmus -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Chiasmus">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Hinzuf%C3%BCgung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperationsform"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/EntgegengesetzteBedeutung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istInPosition"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/GanzeSymmetrisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Semantisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Syntaktisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Konstruktionsfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Vers"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionChiasmus1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Chiasm</rdfs:label>
+        <rdfs:label xml:lang="de">Chiasmus</rdfs:label>
+        <rdfs:label xml:lang="sr">Hijazam</rdfs:label>
+    </owl:Class>
+    
+
+
+    
+    <!-- http://webprotege.stanford.edu/Dysphemismus -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Dysphemismus">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Ersetzung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperationsform"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/staerkereBedeutung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istInPosition"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Ganze"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Semantisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Tropenfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Vers"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionDysphemismus1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sr">Disfemizam</rdfs:label>
+        <rdfs:label xml:lang="en">Dysphemism</rdfs:label>
+        <rdfs:label xml:lang="de">Dysphemismus</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Einpraegsamkeit -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Einpraegsamkeit">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RhetorischeFunktion"/>
+        <rdfs:label xml:lang="de">Einpraegsamkeit</rdfs:label>
+        <rdfs:label xml:lang="en">Memorability</rdfs:label>
+    </owl:Class>
+    
+
+
+   
+    <!-- http://webprotege.stanford.edu/Emotionalitaet -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Emotionalitaet">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RhetorischeFunktion"/>
+        <rdfs:label xml:lang="de">Emotionalitaet</rdfs:label>
+        <rdfs:label xml:lang="en">Emtionality</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Ende -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Ende">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischePosition"/>
+        <rdfs:label>Ende</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/EntgegengesetzteBedeutung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/EntgegengesetzteBedeutung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label>Entgegengesetzte Bedeutung</rdfs:label>
+    </owl:Class>
+    
+
+
+  
+    
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/Epipher -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Epipher">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wiederholung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperationsform"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/SelbeForm"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istInPosition"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Ende"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Syntaktisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Betonungsfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Versobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Strophe"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionEpipher1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sr">Epifora</rdfs:label>
+        <rdfs:label xml:lang="de">Epipher</rdfs:label>
+        <rdfs:label xml:lang="en">Epistrophe</rdfs:label>
+    </owl:Class>
+    
+
+
+ 
+
+    <!-- http://webprotege.stanford.edu/Epizeuxis -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Epizeuxis">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wiederholung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperationsform"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/SelbeForm"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istInPosition"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/GanzeNachfolgend"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Syntaktisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Betonungsfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Vers"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionEpizeuxis1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sr">Epizeusa</rdfs:label>
+        <rdfs:label xml:lang="de">Epizeuxis</rdfs:label>
+        <rdfs:label xml:lang="en">Epizeuxis</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Ersetzung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Ersetzung">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeOperation"/>
+        <rdfs:label>Ersetzung</rdfs:label>
+    </owl:Class>
+    
+
+
+
+    <!-- http://webprotege.stanford.edu/Euphemismus -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Euphemismus">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Ersetzung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperationsform"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/SchwaechereBedeutung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istInPosition"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Ganze"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Semantisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Tropenfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Vers"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionEuphemismus1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sr">Eufemizam</rdfs:label>
+        <rdfs:label xml:lang="en">Euphemism</rdfs:label>
+        <rdfs:label xml:lang="de">Euphemismus</rdfs:label>
+    </owl:Class>
+    
+    
+
+
+    <!-- http://webprotege.stanford.edu/GanzMitUnterbrechung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/GanzMitUnterbrechung">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischePosition"/>
+        <rdfs:label>Ganz mit Unterbrechung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Ganze -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Ganze">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischePosition"/>
+        <rdfs:label>Ganze</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/GanzeNachfolgend -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/GanzeNachfolgend">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischePosition"/>
+        <rdfs:label>Ganze Nachfolgend</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/GanzeNachfolgendMitKonjunktion -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/GanzeNachfolgendMitKonjunktion">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischePosition"/>
+        <rdfs:label>Ganze nachfolgend mit Konjunktion</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/GanzeNachfolgendOhneKonjunktion -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/GanzeNachfolgendOhneKonjunktion">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischePosition"/>
+        <rdfs:label>Ganze nachfolgend ohne Konjunktion</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/GanzeSymmetrisch -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/GanzeSymmetrisch">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischePosition"/>
+        <rdfs:label>Ganze Symmetrisch</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Gedankenfigur -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Gedankenfigur">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeGruppe"/>
+        <rdfs:label>Gedankenfigur</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/GleicheBedeutung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/GleicheBedeutung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label>Gleiche Bedeutung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/GleicheSprachuebereinstimmung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/GleicheSprachuebereinstimmung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label>Gleiche Sprachuebereinstimmung</rdfs:label>
+    </owl:Class>
+    
+
+
+    
+    
+
+    <!-- http://webprotege.stanford.edu/Hyperbel -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Hyperbel">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Hinzuf%C3%BCgung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperationsform"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/staerkereBedeutung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istInPosition"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/GanzeNachfolgend"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Semantisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Tropenfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Vers"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionHyperbel1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sr">Hiperbola</rdfs:label>
+        <rdfs:label xml:lang="de">Hyperbel</rdfs:label>
+        <rdfs:label xml:lang="en">Hyperbole</rdfs:label>
+    </owl:Class>
+    
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/Interpunktionszeichenelement -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Interpunktionszeichenelement">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischesElement"/>
+        <rdfs:label>Interpunktionszeichenelement</rdfs:label>
+    </owl:Class>
+    
+
+
+    
+
+    <!-- http://webprotege.stanford.edu/Konsonant -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Konsonant">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischesElement"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Konsonantelement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Konstruktionsfigur -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Konstruktionsfigur">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeGruppe"/>
+        <rdfs:label>Konstruktionsfigur</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/LinguistischeForm -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/LinguistischeForm">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeEntitaet"/>
+        <rdfs:label>Linguistische Form</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Litotes -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Litotes">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satzelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Verselement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Ersetzung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperationsform"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/SchwaechereBedeutung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istInPosition"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Ganze"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Semantisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Tropenfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satzobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Versobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Vers"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionLitotes1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sr">Litota</rdfs:label>
+        <rdfs:label xml:lang="de">Litotes</rdfs:label>
+        <rdfs:label xml:lang="en">Litotes</rdfs:label>
+    </owl:Class>
+    
+
+    <!-- http://webprotege.stanford.edu/Mitte -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Mitte">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischePosition"/>
+        <rdfs:label>Mitte</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Morphologisch -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Morphologisch">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeGruppe"/>
+        <rdfs:label>Morphologisch</rdfs:label>
+    </owl:Class>
+    
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/Oxymoron -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Oxymoron">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Hinzuf%C3%BCgung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperationsform"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/EntgegengesetzteBedeutung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Semantisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Tropenfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Vers"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionOxymoron1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sr">Oksimoron</rdfs:label>
+        <rdfs:label xml:lang="de">Oxymoron</rdfs:label>
+        <rdfs:label xml:lang="en">Oxymoron</rdfs:label>
+    </owl:Class>
+    
+
+    <!-- http://webprotege.stanford.edu/Paragraph -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Paragraph">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischerUmfang"/>
+        <rdfs:label>Paragraph</rdfs:label>
+    </owl:Class>
+    
+
+
+       
+
+
+    <!-- http://webprotege.stanford.edu/Parallelismus -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Parallelismus">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Hinzuf%C3%BCgung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperationsform"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/UnterschiedlicheBedeutung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istInPosition"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/GanzeNachfolgend"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Semantisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Gedankenfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Vers"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionParallelismus1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sr">Paralelizam</rdfs:label>
+        <rdfs:label xml:lang="en">Parallelism</rdfs:label>
+        <rdfs:label xml:lang="de">Parallelismus</rdfs:label>
+    </owl:Class>
+    
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/Phonologisch -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Phonologisch">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeGruppe"/>
+        <rdfs:label>Phonologisch</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Phrase -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Phrase">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischerUmfang"/>
+        <rdfs:label>Phrase</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Phrasenelement -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Phrasenelement">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischesElement"/>
+        <rdfs:label>Phrasenelement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Phrasenobjekt -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Phrasenobjekt">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischesObjekt"/>
+        <rdfs:label>Phrasenobjekt</rdfs:label>
+    </owl:Class>
+    
+
+
+    
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/PositiveAntwort -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/PositiveAntwort">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label>Positive Antwort</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Pragmatisch -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Pragmatisch">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeGruppe"/>
+        <rdfs:label>Pragmatisch</rdfs:label>
+    </owl:Class>
+    
+
+
+    
+
+    <!-- http://webprotege.stanford.edu/RhetorischeDefinition -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RhetorischeDefinition">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeEntitaet"/>
+        <rdfs:label>Rhetorische Definition</rdfs:label>
+    </owl:Class>
+    
+
+
+
+    <!-- http://webprotege.stanford.edu/RhetorischeFunktion -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RhetorischeFunktion">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeEntitaet"/>
+        <rdfs:label>Rhetorische Funktion</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Satz -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Satz">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischerUmfang"/>
+        <rdfs:label>Satz</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Satzelement -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Satzelement">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischesElement"/>
+        <rdfs:label>Satzelement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Satzobjekt -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Satzobjekt">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischesObjekt"/>
+        <rdfs:label>Satzobjekt</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/SchwaechereBedeutung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/SchwaechereBedeutung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label>Schwaechere Bedeutung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/SchwaechereNegativeBedeutung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/SchwaechereNegativeBedeutung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label>Schwaechere Negative Bedeutung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/SelbeForm -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/SelbeForm">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Selbe Form</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Semantisch -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Semantisch">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeGruppe"/>
+        <rdfs:label>Semantisch</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Strophe -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Strophe">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischerUmfang"/>
+        <rdfs:label>Strophe</rdfs:label>
+    </owl:Class>
+    
+
+
+   
+    
+
+
+    <!-- http://webprotege.stanford.edu/Syntaktisch -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Syntaktisch">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeGruppe"/>
+        <rdfs:label>Syntaktisch</rdfs:label>
+    </owl:Class>
+    
+
+
+    
+    <!-- http://webprotege.stanford.edu/Trennung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Trennung">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeOperation"/>
+        <rdfs:label>Trennung</rdfs:label>
+    </owl:Class>
+    
+
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/Tropenfigur -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Tropenfigur">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeGruppe"/>
+        <rdfs:label>Tropenfigur</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/UebertrageneBedeutung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/UebertrageneBedeutung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label>Uebertragene Bedeutung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Uebertragung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Uebertragung">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeOperation"/>
+        <rdfs:label>Uebertragung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Ueberzeugung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Ueberzeugung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RhetorischeFunktion"/>
+        <rdfs:label xml:lang="en">Persuasion</rdfs:label>
+        <rdfs:label xml:lang="de">Ueberzeugung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Umstellung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Umstellung">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeOperation"/>
+        <rdfs:label>Umstellung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/UnterschiedlicheBedeutung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/UnterschiedlicheBedeutung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label>Unterschiedliche Bedeutung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Veranschaulichung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Veranschaulichung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RhetorischeFunktion"/>
+        <rdfs:label xml:lang="en">Illustration</rdfs:label>
+        <rdfs:label xml:lang="de">Veranschaulichung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Verbindung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Verbindung">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeOperation"/>
+        <rdfs:label>Verbindung</rdfs:label>
+    </owl:Class>
+    
+
+
+    
+    
+
+
+    <!-- http://webprotege.stanford.edu/Verkuerzung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Verkuerzung">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeOperation"/>
+        <rdfs:label>Verkuerzung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Vers -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Vers">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischerUmfang"/>
+        <rdfs:label>Vers</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Verselement -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Verselement">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischesElement"/>
+        <rdfs:label>Verselement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Versobjekt -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Versobjekt">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischesObjekt"/>
+        <rdfs:label>Versobjekt</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Vokalelement -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Vokalelement">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischesElement"/>
+        <rdfs:label>Vokalelement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Weglassen -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Weglassen">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeOperation"/>
+        <rdfs:label>Weglassen</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Wiederholung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Wiederholung">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeOperation"/>
+        <rdfs:label>Wiederholung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Wort -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Wort">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischerUmfang"/>
+        <rdfs:label>Wort</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Wortelement -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Wortelement">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischesElement"/>
+        <rdfs:label>Wortelement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Wortobjekt -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Wortobjekt">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischesObjekt"/>
+        <rdfs:label>Wortobjekt</rdfs:label>
+    </owl:Class>
+    
+
+
+
+    <!-- http://webprotege.stanford.edu/Zeugma -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Zeugma">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/betroffenensElement"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Phrasenelement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperation"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Hinzuf%C3%BCgung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatOperationsform"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/AehnlicheBedeutung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istInPosition"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/GanzeNachfolgend"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istLinguistischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Syntaktisch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Konstruktionsfigur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#istUeberObjekt"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Wortobjekt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Satz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ramonakuehn.de/grhoot.owl#liegtImBereich"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Vers"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hatDefinition"/>
+                <owl:hasValue rdf:resource="http://webprotege.stanford.edu/DefinitionZeugma1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="de">Zeugma</rdfs:label>
+        <rdfs:label xml:lang="en">Zeugma</rdfs:label>
+        <rdfs:label xml:lang="sr">Zeugma</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/staerkereBedeutung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/staerkereBedeutung">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LinguistischeForm"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stärkere Bedeutung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Hinzuf%C3%BCgung -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Hinzuf%C3%BCgung">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeOperation"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hinzufuegung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#LinguistischeEntitaet -->
+
+    <owl:Class rdf:about="https://ramonakuehn.de/grhoot.owl#LinguistischeEntitaet">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Linguistische Entitaet</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#LinguistischeGruppe -->
+
+    <owl:Class rdf:about="https://ramonakuehn.de/grhoot.owl#LinguistischeGruppe">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeEntitaet"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Linguistische Gruppe</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#LinguistischeOperation -->
+
+    <owl:Class rdf:about="https://ramonakuehn.de/grhoot.owl#LinguistischeOperation">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeEntitaet"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Linguistische Operation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#LinguistischePosition -->
+
+    <owl:Class rdf:about="https://ramonakuehn.de/grhoot.owl#LinguistischePosition">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeEntitaet"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Linguistische Position</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#LinguistischerUmfang -->
+
+    <owl:Class rdf:about="https://ramonakuehn.de/grhoot.owl#LinguistischerUmfang">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeEntitaet"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Linguistischer Umfang</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#LinguistischesElement -->
+
+    <owl:Class rdf:about="https://ramonakuehn.de/grhoot.owl#LinguistischesElement">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeEntitaet"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Linguistisches Element</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#LinguistischesObjekt -->
+
+    <owl:Class rdf:about="https://ramonakuehn.de/grhoot.owl#LinguistischesObjekt">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeEntitaet"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Linguistisches Objekt</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#RhetorischeEntitaet -->
+
+    <owl:Class rdf:about="https://ramonakuehn.de/grhoot.owl#RhetorischeEntitaet">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rhetorische Entitaet</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#RhetorischeFigur -->
+
+    <owl:Class rdf:about="https://ramonakuehn.de/grhoot.owl#RhetorischeFigur">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeEntitaet"/>
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeEntitaet"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rhetorische Figur</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#RhetorischeGruppe -->
+
+    <owl:Class rdf:about="https://ramonakuehn.de/grhoot.owl#RhetorischeGruppe">
+        <rdfs:subClassOf rdf:resource="https://ramonakuehn.de/grhoot.owl#RhetorischeEntitaet"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rhetorische Gruppe</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/Beispiel1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel1">
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Adelbert von Chamisso</webprotege:istAutor>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Peter Schlehmihls wunderbare Geschichte</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ein stiller, hagerer, duenner, laenglicher Mann</grhoot:istBeispiel>
+        <rdfs:label>Beispiel1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Beispiel11 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel11">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Alliteration"/>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Michael Ende</webprotege:istAutor>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Der satanarchaeoluegenialkohoellische Wunschpunsch</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beim Strahlenden Strontium</grhoot:istBeispiel>
+        <rdfs:label>Beispiel11</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Beispiel13 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel13">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Alliteration"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Umgangssprachlich</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Zwischen zwei Zwetschgenzweigen zwitschern zwei Zwerge</grhoot:istBeispiel>
+        <rdfs:label>Beispiel13</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Beispiel2 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel2">
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Andreas Gryphius</webprotege:istAutor>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Die Hoelle</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mord! Zeter! Jammer! Angst! Creutz! Marter! Wuerme! Plagen!</grhoot:istBeispiel>
+        <rdfs:label>Beispiel2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Beispiel3 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel3">
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Georg Buechner</webprotege:istAutor>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Der hessische Landbote</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ihre Anzahl ist Legion: Staatsraete und Regierungsraete, Landraete und Kreisraete, Geistliche Raete und Schulraete, Finanzraete und Forstraete usw.</grhoot:istBeispiel>
+        <rdfs:label>Beispiel3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Beispiel4 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel4">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Akrostichon"/>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rudolf von Ems</webprotege:istAutor>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Willehalm von Orlens</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wer hat mich guoter her gelesen?
+Ist ez ieman gewesen
+Lebende in solcher wise,
+Lobe er mich, des mich prise
+Ez si man oder wip,
+Habe er so getriuwen lip,
+Ane velsche sol er mich
+Lieben – daz ist friuntlich –
+Mit sueezer sinne stiure …</grhoot:istBeispiel>
+        <rdfs:label>Beispiel4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Beispiel5 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel5">
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Michael Ende</webprotege:istAutor>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Der satanarchaeoluegenialkohoellische Wunschpunsch</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beim Strahlenden Strontium!</grhoot:istBeispiel>
+        <rdfs:label>Beispiel5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Beispiel6 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel6">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Anapher"/>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Johann Wolfgang von Goethe</webprotege:istAutor>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Der Zauberlehrling</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Das Wasser rauscht, das Wasser schwoll, netzt ihm den nackten Fuß</grhoot:istBeispiel>
+        <rdfs:label>Beispiel6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Beispiel7 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel7">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Akzismus"/>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Das Geschenk kann ich wirklich nicht annehmen!</grhoot:istBeispiel>
+        <rdfs:label>Beispiel7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Beispiel8 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel8">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Akzismus"/>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Das hat er nicht wirklich gesagt.</grhoot:istBeispiel>
+        <rdfs:label>Beispiel8</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Beispiel9 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel9">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Alliteration"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Assonanz"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Werbung</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mut zur Muße</grhoot:istBeispiel>
+        <rdfs:label>Beispiel9</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+  <!-- http://webprotege.stanford.edu/Beispiel10 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel10">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Anapher"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Goethe</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Das Wasser rauscht, das Wasser schwoll, Netzt ihm den nackten Fuß</grhoot:istBeispiel>
+        <rdfs:label>Beispiel10</rdfs:label>
+    </owl:NamedIndividual>
+
+<!-- http://webprotege.stanford.edu/Beispiel14 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel14">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Anapher"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Robert F. Kennedy</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ich kandidiere fuer die Praesidentschaft nicht nur [...] Ich kandidiere, weil ich ueberzeugt bin [...]</grhoot:istBeispiel>
+        <rdfs:label>Beispiel11</rdfs:label>
+    </owl:NamedIndividual>
+
+
+<!-- http://webprotege.stanford.edu/Beispiel15 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel15">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Anadiplose"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wolfgang Koeppen: Tod in Rom</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">die schlafende zuernende Norne naechtlichen Nichtdenkens. Naechtlichem Nichtdenken anheimgegeben</grhoot:istBeispiel>
+        <rdfs:label>Beispiel15</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- http://webprotege.stanford.edu/Beispiel16 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel16">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Antimetabole"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spruch</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wir leben nicht, um zu arbeiten; wir arbeiten, um zu leben</grhoot:istBeispiel>
+        <rdfs:label>Beispiel16</rdfs:label>
+    </owl:NamedIndividual>
+
+
+   <!-- http://webprotege.stanford.edu/Beispiel17 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel17">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Antimetabole"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">John F. Kennedy</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Frage nicht, was dein Land fuer dich tun kann, frage, was du fuer dein Land tun kannst</grhoot:istBeispiel>
+        <rdfs:label>Beispiel17</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+<!-- http://webprotege.stanford.edu/Beispiel18 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel18">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Antithese"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spruch</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Was dieser baut, reißt jener morgen ein</grhoot:istBeispiel>
+        <rdfs:label>Beispiel18</rdfs:label>
+    </owl:NamedIndividual>
+
+
+<!-- http://webprotege.stanford.edu/Beispiel19 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel19">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Antithese"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spruch</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Weniger ist mehr</grhoot:istBeispiel>
+        <rdfs:label>Beispiel19</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- http://webprotege.stanford.edu/Beispiel20 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel20">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Antithese"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spruch</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gute Miene zum bösen Spiel</grhoot:istBeispiel>
+        <rdfs:label>Beispiel20</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://webprotege.stanford.edu/Beispiel21 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel21">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Chiasmus"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Goethe: Faust</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Die Kunst ist lang, und kurz ist unser Leben</grhoot:istBeispiel>
+        <rdfs:label>Beispiel21</rdfs:label>
+    </owl:NamedIndividual>
+
+        <!-- http://webprotege.stanford.edu/Beispiel22 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel22">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Chiasmus"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Helmut Glueck: Metzler Lexikon Sprache</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Die Stadt ist groß und klein ist das Gehalt</grhoot:istBeispiel>
+        <rdfs:label>Beispiel22</rdfs:label>
+    </owl:NamedIndividual>
+
+
+     <!-- http://webprotege.stanford.edu/Beispiel23 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel23">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Epipher"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">James Bond</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mein Name ist Bond. James Bond.</grhoot:istBeispiel>
+        <rdfs:label>Beispiel23</rdfs:label>
+    </owl:NamedIndividual>
+
+       <!-- http://webprotege.stanford.edu/Beispiel24 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel24">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Epipher"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harold Pinter: Krieg</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wo fand man den Toten? Wer fand den Toten? Wie fand man den Toten?</grhoot:istBeispiel>
+        <rdfs:label>Beispiel24</rdfs:label>
+    </owl:NamedIndividual>
+
+
+     <!-- http://webprotege.stanford.edu/Beispiel25 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel25">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Epizeuxis"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Friedrich Schiller: Die Raeuber</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nein! nein! nein! das kann nicht sein</grhoot:istBeispiel>
+        <rdfs:label>Beispiel25</rdfs:label>
+    </owl:NamedIndividual>
+
+         <!-- http://webprotege.stanford.edu/Beispiel26 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel26">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Epizeuxis"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wilhem Busch: Max und Moritz</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aber wehe, wehe, wehe, Wenn ich auf das Ende sehe!</grhoot:istBeispiel>
+        <rdfs:label>Beispiel26</rdfs:label>
+    </owl:NamedIndividual>
+
+
+      <!-- http://webprotege.stanford.edu/Beispiel27 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel27">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Euphemismus"/>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jemanden neutralisieren (statt umbringen)</grhoot:istBeispiel>
+        <rdfs:label>Beispiel27</rdfs:label>
+    </owl:NamedIndividual>
+
+         <!-- http://webprotege.stanford.edu/Beispiel28 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel28">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Euphemismus"/>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Orthographisch mutiges Protokoll (fuer viele Rechtschreibfehler)</grhoot:istBeispiel>
+        <rdfs:label>Beispiel28</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+      <!-- http://webprotege.stanford.edu/Beispiel29 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel29">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Dysphemismus"/>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Baader-Meinhof-Bande (statt Baader-Meinhof-Gruppe)</grhoot:istBeispiel>
+        <rdfs:label>Beispiel29</rdfs:label>
+    </owl:NamedIndividual>
+
+         <!-- http://webprotege.stanford.edu/Beispiel30 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel30">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Dysphemismus"/>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">zusammenrotten (statt sich versammeln)</grhoot:istBeispiel>
+        <rdfs:label>Beispiel30</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+
+
+     <!-- http://webprotege.stanford.edu/Beispiel31 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel31">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Hyperbel"/>
+          <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Redewendung</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gift und Galle spucken</grhoot:istBeispiel>
+        <rdfs:label>Beispiel31</rdfs:label>
+    </owl:NamedIndividual>
+
+         <!-- http://webprotege.stanford.edu/Beispiel31 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel31">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Hyperbel"/>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">todmuede</grhoot:istBeispiel>
+        <rdfs:label>Beispiel31</rdfs:label>
+    </owl:NamedIndividual>
+
+
+ <!-- http://webprotege.stanford.edu/Beispiel32 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel32">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Litotes"/>
+          <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Georg Buechner: Der hessische Landbote</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Und diese Zeit, geliebte Mitbuerger, ist nicht ferne</grhoot:istBeispiel>
+        <rdfs:label>Beispiel32</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+ <!-- http://webprotege.stanford.edu/Beispiel33 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel33">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Litotes"/>
+          <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joschka Fischer</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wir wissen doch, dass es keine Aufgabe weniger Jahre ist.</grhoot:istBeispiel>
+        <rdfs:label>Beispiel33</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+ <!-- http://webprotege.stanford.edu/Beispiel34 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel34">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Oxymoron"/>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bittersueß</grhoot:istBeispiel>
+        <rdfs:label>Beispiel34</rdfs:label>
+    </owl:NamedIndividual>
+
+
+     <!-- http://webprotege.stanford.edu/Beispiel35 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel35">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Oxymoron"/>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">heiße Kaelte</grhoot:istBeispiel>
+        <rdfs:label>Beispiel35</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+     <!-- http://webprotege.stanford.edu/Beispiel36 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel36">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Parallelismus"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Antithese"/>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Die Stadt ist groß und das Gehalt ist klein</grhoot:istBeispiel>
+        <rdfs:label>Beispiel36</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- http://webprotege.stanford.edu/Beispiel37 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel37">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Parallelismus"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Friedrich Schiller: Maria Stuart</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ich bin entdeckt, ich bin durchschaut.</grhoot:istBeispiel>
+        <rdfs:label>Beispiel37</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+
+     <!-- http://webprotege.stanford.edu/Beispiel38 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel38">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Zeugma"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dagobert Duch</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ch gehe aus, Baptist! Vor allem davon, dass Sie mir auf meine Talerchen achten!</grhoot:istBeispiel>
+        <rdfs:label>Beispiel38</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- http://webprotege.stanford.edu/Beispiel39 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Beispiel39">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Zeugma"/>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Heinz Erhardt</webprotege:istBeispielQuelle>
+        <grhoot:istBeispiel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ich heiße nicht nur Heinz Erhardt, sondern Sie auch herzlich willkommen.</grhoot:istBeispiel>
+        <rdfs:label>Beispiel39</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+
+    <!-- http://webprotege.stanford.edu/Berner -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Berner">
+        <rdfs:label>Berner</rdfs:label>
+    </owl:NamedIndividual>
+    
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionAlliteration1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionAlliteration1">
+        <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gleichklingender Anlaut der betonten Silben innerhalb einer Wortgruppe.</webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Metzler</webprotege:istAutor>
+        <webprotege:istBeispielQuelle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Metzler Lexikon der Sprache</webprotege:istBeispielQuelle>
+        <rdfs:label>DefinitionAlliteration1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+
+
+   
+
+    <!-- http://webprotege.stanford.edu/DefinitionAnadiplose1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionAnadiplose1">
+        <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Verdopplung; Wiederholung des letzten Wortes eines Satzes/Zeile am  Anfang des(r) folgenden Satzes/Zeile </webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Berner</webprotege:istAutor>
+        <rdfs:label>DefinitionAnadiplose1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionAnapher1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionAnapher1">
+        <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wiederholung des Anfangswortes in aufeinanderfolgenden Sätzen oder Zeilen</webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Berner</webprotege:istAutor>
+        <rdfs:label>DefinitionAnapher1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionAntimetabole1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionAntimetabole1">
+                <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">>Wiederholung von Woertern in zwei gleich gebauten Saetzen in umgekehrter Reihenfolge (z. B.: Wir leben nicht, um zu essen, sondern wir essen, um zu leben)</webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Berner</webprotege:istAutor>
+        <rdfs:label>DefinitionAntimetabole1</rdfs:label>
+
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionAntithese1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionAntithese1">
+            <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gegensetzung; Gegenueberstellung entgegengesetzter Begriffe in einem Satz. Antonyme werden oft in einer parallelen Struktur verwendet</webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Berner</webprotege:istAutor>
+        <rdfs:label>DefinitionAntithese1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionChiasmus1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionChiasmus1">
+        <rdfs:label>DefinitionChiasmus1</rdfs:label>
+        <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ueberkreuzstellung von syntaktisch oder semantisch entsprechenden Satzteilen ("die Kunst ist lang, und kurz ist unser Leben</webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Berner</webprotege:istAutor>
+    </owl:NamedIndividual>
+    
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionDysphemismus1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionDysphemismus1">
+        <rdfs:label>DefinitionDysphemismus1 </rdfs:label>
+        <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ausdruck mit stark herabsetzender Bedeutung, saftige Beschimpfung, Beleidigung, die die Normen des sprachlichen Benimms verletzt. Gegenteil von Euphemismus</webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Metzler</webprotege:istAutor>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionEllipse1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionEllipse1">
+        <rdfs:label>DefinitionEllipse1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionEmphase1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionEmphase1">
+        <rdfs:label>DefinitionEmphase1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionEnallage -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionEnallage">
+        <rdfs:label>DefinitionEnallage</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionEnumeration1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionEnumeration1">
+        <rdfs:label>DefinitionEnumeration1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionEpanadiplose1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionEpanadiplose1">
+        <rdfs:label>DefinitionEpanadiplose1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionEpanalepse1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionEpanalepse1">
+        <rdfs:label>DefinitionEpanalepse1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionEpanodos1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionEpanodos1">
+        <rdfs:label>DefinitionEpanodos1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionEpipher1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionEpipher1">
+        <rdfs:label>DefinitionEpipher1</rdfs:label>
+        <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Umkehr der Anapher, Wiederholung eines oder mehrerer Woerter am Satz- oder Versende</webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Berner</webprotege:istAutor>
+
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionEpitheton1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionEpitheton1">
+        <rdfs:label>DefinitionEpitheton1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionEpithetonOrnans1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionEpithetonOrnans1">
+        <rdfs:label>DefinitionEpithetonOrnans1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionEpizeuxis1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionEpizeuxis1">
+        <rdfs:label>DefinitionEpizeuxis1</rdfs:label>
+        <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rhetorische Form der Wiederholung einer drei- oder mehrgliedrigen unmittelbaren Wortfolge</webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Berner</webprotege:istAutor>
+    </owl:NamedIndividual>
+    
+
+
+ 
+    <!-- http://webprotege.stanford.edu/DefinitionEuphemismus1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionEuphemismus1">
+        <rdfs:label>DefinitionEuphemismus1</rdfs:label>
+        <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unangenehmes mit angenehmen Worten sagen, eine beschoenigende Bezeichnung, auch Melioration genannt (Einkaufsparadies fuer Geschaeft).</webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Berner</webprotege:istAutor>
+    </owl:NamedIndividual>
+    
+
+
+ 
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionHyperbel1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionHyperbel1">
+        <rdfs:label>DefinitionHyperbel1</rdfs:label>
+          <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Uebermaß, ueber ein Ziel hinauswerfen; ueber- oder Untertreibung.</webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Berner</webprotege:istAutor>
+    </owl:NamedIndividual>
+    
+
+
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionLitotes1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionLitotes1">
+        <rdfs:label>DefinitionLitotes1</rdfs:label>
+         <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Schlichtheit, Abschwaechung, Hervorhebung eines Begriffs durch Verneinung des Gegenteils, bei doppelter Verneinung Bejahung, kann ironisch und als Anspielung verwendet werden.</webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Berner</webprotege:istAutor>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionOxymoron1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionOxymoron1">
+        <rdfs:label>DefinitionOxymoron1</rdfs:label>
+        <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Verbindung zweier sich ausschließender logischer Begriffe in einem Kompositum oder als contradictio in adiecto (Widerspruch im Beiwort) ein Nomen mit gegensaetzlichem Adjektivattribut</webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Berner</webprotege:istAutor>
+    </owl:NamedIndividual>
+    
+
+
+
+    <!-- http://webprotege.stanford.edu/DefinitionParallelismus1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionParallelismus1">
+        <rdfs:label>DefinitionParallelismus1</rdfs:label>
+        <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wiederholung derselben syntaktischen Konstruktion in mindestens zwei aufeinander folgenden Satzgliedern (gr. Isokolon) oder in dreien (gr. Trikolon), oft mit einer Steigerung oder wachsenden Gliedern verbunden</webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Berner</webprotege:istAutor>
+    </owl:NamedIndividual>
+    
+
+    <!-- http://webprotege.stanford.edu/DefinitionZeugma1 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/DefinitionZeugma1">
+        <rdfs:label>DefinitionZeugma1</rdfs:label>
+                <webprotege:hatDefinitionsText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Die Verbindung zweier Nomina durch ein Verb, das, da doppelsinnig, sinngemaeß nur zu einem passt. </webprotege:hatDefinitionsText>
+        <webprotege:istAutor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Berner</webprotege:istAutor>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#Mitte -->
+
+    <owl:NamedIndividual rdf:about="https://ramonakuehn.de/grhoot.owl#Mitte">
+        <rdf:type rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischePosition"/>
+        <rdfs:label>Mitte</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#Morphologisch -->
+
+    <owl:NamedIndividual rdf:about="https://ramonakuehn.de/grhoot.owl#Morphologisch">
+        <rdf:type rdf:resource="https://ramonakuehn.de/grhoot.owl#LinguistischeGruppe"/>
+        <rdfs:label>Morphologisch</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+
+    <!-- https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe -->
+
+    <owl:NamedIndividual rdf:about="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe">
+        <grhoot:Name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">istRhetorischeGruppe</grhoot:Name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="https://ramonakuehn.de/grhoot.owl#istRhetorischeGruppe">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ist Rhetorische Gruppe</rdfs:label>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi -->
+

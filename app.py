@@ -22,7 +22,7 @@ import rdflib
 
 g = rdflib.Graph()
 # g.parse('C:/Users/kuehn21/PycharmProjects/GrhootRestructured/grhoot.owl', format='application/rdf+xml')
-g.parse('C:/Users/kuehn21/PycharmProjects/RAGTutorial/grhootNewSmall.owl', format='application/rdf+xml')
+g.parse('./grhootNewSmall.owl', format='application/rdf+xml')
 
 webprotege = rdflib.Namespace('http://webprotege.stanford.edu/')
 gr = rdflib.Namespace('https://ramonakuehn.de/grhoot.owl#')
