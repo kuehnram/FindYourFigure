@@ -1,7 +1,16 @@
 """
+Tutorial: https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
+
+Things to do:
+Add database functionality
+
+make it look nicer
+
 Add Internationalization
 https://medium.com/@nicolas_84494/flask-create-a-multilingual-web-application-with-language-specific-urls-5d994344f5fd
 https://phrase.com/blog/posts/flask-app-tutorial-i18n/
+
+Put SPARQL queries in a separate file
 
 """
 import random
@@ -10,7 +19,6 @@ from flask import Flask, render_template, request, url_for, redirect, flash
 import sqlite3
 from werkzeug.exceptions import abort
 import rdflib
-
 
 g = rdflib.Graph()
 # g.parse('C:/Users/kuehn21/PycharmProjects/GrhootRestructured/grhoot.owl', format='application/rdf+xml')
@@ -161,11 +169,11 @@ def fyfpage():
                     {operation_block if operation != nothing else ""}
                     {operation_position_block if operation_position != nothing else ""}
                     {ling_form_block if ling_form != nothing else ""}
-                   .
+                    FILTER (LANG(?label) = 'de').
             }}
             """
 
-        test = f"""
+        test_query = f"""
               SELECT ?label
               WHERE {{
                 ?class rdf:type owl:Class ;
@@ -179,20 +187,19 @@ def fyfpage():
                         rdf:type owl:Restriction ;
                         owl:onProperty webprotege:hatOperationsform ;
                         owl:someValuesFrom webprotege:SelbeForm ;
-                       ] .
+                       ] 
+               FILTER (LANG(?label) = 'de').       
               }}
-              """
+                   """
 
-        result = g.query(test)
+        # result = g.query(figure_query) # TODO change in the end, static test_query only for testing purposes
+        result = g.query(test_query)
         result = parse_figure_name(result)
         figure_infos = []
-        figure_info = {"figure_name": "",
-                       "definitions": [],
-                       "examples": []}
+
         for figure_name in result:
-            figure_info["figure_name"] = figure_name
-            figure_info["definitions"] = get_figure_definition(figure_name)
-            figure_info["examples"] = get_examples(figure_name)
+            figure_info = {"figure_name": figure_name, "definitions": get_figure_definition(figure_name),
+                           "examples": get_examples(figure_name)}
             figure_infos.append(figure_info)
         if not text:
             flash('Bitte gib einen Text ein!')
@@ -283,18 +290,16 @@ def get_examples(figure_name):
         }
         examples.append(example_entry)
 
-    print(examples)
     return examples
 
 
 # Retrieves a random examples from the database which is not yet annotated/connected with a figure via the
 # table contains_figure. Think if better to check first which examples are in db then generate or create random numbers
 # and test over and over if example is not annotated. Maybe create another table/column for it (e.g. annotated?)?
-# TODO: place button right, check that example is not yet connected with another figure (table contains_figure)
-#  and display result in the textfields
+# TODO: place button right, check in table annotations that example is not yet connected with another figure or has the least annotations yet.
+#  Then display result in the textfields
 @app.route("/get_random_example", methods=['POST', 'GET'])
 def get_random_example():
-    print("TEEEST")
     connection = sqlite3.connect('database.db')
     cursor = connection.cursor()
 
@@ -338,9 +343,8 @@ def figure_information():
                               "examples": get_examples(figure), "position": "Anfang",
                               "rhetoricalClass": "Betonungsfigur"}  # etc...
         figure_detail_infos.append(figure_detail_info)
-        print(figure_detail_infos)
-        figure_info_query = """"""
-        return render_template("figure_info.html", figure_names=figure_data, ergebnis="Hier sind alle Infos zu dieser Figur:",
+        return render_template("figure_info.html", figure_names=figure_data,
+                               ergebnis="Hier sind alle Infos zu dieser Figur:",
                                figure_detail_infos=figure_detail_infos)
 
     return render_template("figure_info.html", figure_names=figure_data)
@@ -389,6 +393,7 @@ def create():
             return redirect(url_for('index'))
     return render_template('create.html')
 
+
 #
 # @app.route("/<int:id>/edit", methods=("GET", "POST"))
 # def edit(id):
@@ -431,7 +436,6 @@ def get_figure_label() -> list:
     data = []
     for row in result:
         value_element = row[0]
-        print(value_element)
         data.append(value_element)
     return data
 

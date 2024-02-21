@@ -143,6 +143,7 @@
                         <b>{{ row["figure_name"] }}</b>
                     </label>
                     <br>
+                    Definition: <br>
                     {% for ro in row["definitions"] %}
                         {{ ro["text"] }} - {{ ro["author"] }}
                     {% endfor %}
@@ -150,13 +151,17 @@
                     <br><br>
                     Beispiele: <br>
                     {% for ex in row["examples"] %}
-                        {{ ex["example_text"] }} - <em>{{ ex["example_source"] }}: {{ ex["example_author"] }} </em><br/>
+                        {{ ex["example_text"] }} - {%  if ex["example_source"] %}<em>{{ ex["example_source"]}} {% endif %} {%  if ex["author"] %}:{{ ex["example_author"] }} {% endif %}</em><br/>
                     {% endfor %}
                     {#                {{ row["examples"] }}#}
                 </div>
             </div>
 
         {% endfor %}
+        {% if ergebnis %}<div class="form-group">
+                <button type="submit" class="btn btn-primary">Figur(en) zuordnen und speichern</button>
+            </div>
+        {% endif %}
     </div>
 
 
@@ -174,9 +179,7 @@
             </div>
 
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Figur(en) zuordnen und speichern</button>
-            </div>
+
         </form>
 
 
