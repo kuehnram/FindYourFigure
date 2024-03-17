@@ -1,40 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Gib einen Text ein!</h1>
+<h1>Gib einen Text ein!</h1>
 
-    <p>Wenn du einen Text gefunden hast, in dem du eine rhetorische Figur vermutest, aber keine Lust hast, diese zu
-        <a href="{{ url_for('index') }}">annotieren</a>,
-        kannst du hier einfach den Text mit Autor und Quelle eingeben.</p>
+<p>Wenn du einen Text gefunden hast, in dem du eine rhetorische Figur vermutest, aber keine Lust hast, diese zu
+    <a href="{{ url_for('index') }}">annotieren</a>,
+    kannst du hier einfach den Text mit Autor und Quelle eingeben.
+</p>
 
 
-    <form method="post">
-        <div class="form-group">
-            <label for="text">Text</label>
-            <textarea name="text" placeholder="Gib einen Text mit einer rhetorischen Figur ein!"
-                      class="form-control">{{ request.form['text'] }}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="text" style="display: block">Kontext
-                <textarea name="text"
-                          placeholder="Oft hilft es, wenn du einige Sätze vorher angibst, da Kontext hilfreich sein kann."
-                          class="form-control">{{ request.form['context'] }}</textarea>
-            </label>
-        </div>
-        <div class="form-group">
-            <label for="author">Autor</label>
-            <input type="text" name="author"
-                   placeholder="Vorname Nachname" class="form-control"
-                   value="{{ request.form['author'] }}"></input>
-        </div>
-        <div class="form-group">
-            <label for="source">Quelle</label>
-            <input type="source" name="source"
-                   placeholder="Quelle/Buch/Artikel" class="form-control"
-                   value="{{ request.form['source'] }}"></input>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
+<form method="post">
+    <div class="form-group">
+        <label for="text">Text</label>
+        <textarea name="text" placeholder="Gib einen Text mit einer rhetorischen Figur ein!"
+            class="form-control">{{ request.form['text'] }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="text" style="display: block">Kontext
+            <textarea name="text"
+                placeholder="Oft hilft es, wenn du einige Sätze vorher angibst, da Kontext hilfreich sein kann."
+                class="form-control">{{ request.form['context'] }}</textarea>
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="author">Autor</label>
+        <input type="text" name="author" placeholder="Vorname Nachname" class="form-control"
+            value="{{ request.form['author'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="source">Quelle</label>
+        <input type="source" name="source" placeholder="Quelle/Buch/Artikel" class="form-control"
+            value="{{ request.form['source'] }}"></input>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
 {% endblock %}
