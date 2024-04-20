@@ -12,12 +12,16 @@ https://phrase.com/blog/posts/flask-app-tutorial-i18n/
 
 Put SPARQL queries in a separate file
 """
+import http
 import random
 import sqlite3
+from typing import List
 
 import rdflib
-from flask import Flask, render_template, request, url_for, redirect, flash
+from flask import Flask, render_template, request, url_for, redirect, flash, Response
 from werkzeug.exceptions import abort
+
+import db
 
 g = rdflib.Graph()
 # g.parse('C:/Users/kuehn21/PycharmProjects/GrhootRestructured/grhoot.owl', format='application/rdf+xml')
@@ -69,8 +73,7 @@ def get_example_data() -> sqlite3.Row:
     TODO: place button right, check in table annotations that example is not yet connected with another figure or has the least annotations yet. Then display result in the textfields
     """
     print("example Button")
-    connection = sqlite3.connect('database.db')
-    connection.row_factory = sqlite3.Row
+    connection = db.get_db_connection()
     cursor = connection.cursor()
 
     # Get the total number of entries in the table
@@ -88,7 +91,7 @@ def get_example_data() -> sqlite3.Row:
     connection.close()
     # Now 'random_entry' contains the randomly retrieved entry
     if random_entry is None:
-        abort(404)
+        abort(http.HTTPStatus.INTERNAL_SERVER_ERROR, f"No examples found")
     return random_entry
 
 
@@ -382,22 +385,6 @@ def figure_information():
     return render_template("figure_info.html", figure_names=figure_data)
 
 
-@app.route('/<int:post_id>')
-def post(post_id):
-    post = get_post(post_id)
-    return render_template('post.html', post=post)
-
-
-def get_post(post_id):
-    conn = get_db_connection()
-    post = conn.execute('SELECT * FROM posts WHERE id = ?',
-                        (post_id,)).fetchone()
-    conn.close()
-    if post is None:
-        abort(404)
-    return post
-
-
 @app.route('/function')
 def function():
     return render_template("function.html")
@@ -418,7 +405,7 @@ def create():
         if not text:
             flash('Bitte gib einen Text ein!')
         else:
-            conn = get_db_connection()
+            conn = db.get_db_connection()
             conn.execute('INSERT INTO texts (text, context, author, source) VALUES (?, ?, ?, ?)',
                          (text, context, author, source))
             conn.commit()
@@ -442,12 +429,6 @@ def get_figure_label() -> list:
         value_element = row[0]
         data.append(value_element)
     return data
-
-
-def get_db_connection():
-    conn = sqlite3.connect("database.db")
-    conn.row_factory = sqlite3.Row
-    return conn
 
 
 if __name__ == '__main__':
