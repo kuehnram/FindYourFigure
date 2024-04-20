@@ -11,7 +11,6 @@ https://medium.com/@nicolas_84494/flask-create-a-multilingual-web-application-wi
 https://phrase.com/blog/posts/flask-app-tutorial-i18n/
 
 Put SPARQL queries in a separate file
-
 """
 import random
 import sqlite3
@@ -45,9 +44,11 @@ def index():
     return render_template('index.html')
 
 
-# Get all elements from a certain category from the ontology as options in the dropdown menu
-# how output looks for example: data = [{"figure": "Anapher"}, {"figure": "Epipher"}, {"figure": "Symploke"}]
 def query_list_elements(query: str, key_name: str, no_idea: bool) -> list:
+    """
+    Get all elements from a certain category from the ontology as options in the dropdown menu how output looks for
+    example: data = [{"figure": "Anapher"}, {"figure": "Epipher"}, {"figure": "Symploke"}]
+    """
     result = g.query(query)
     data = []
     for row in result:
@@ -59,12 +60,14 @@ def query_list_elements(query: str, key_name: str, no_idea: bool) -> list:
     return data
 
 
-# Retrieves a random examples from the database which is not yet annotated/connected with a figure via the
-# table contains_figure. Think if better to check first which examples are in db then generate or create random numbers
-# and test over and over if example is not annotated. Maybe create another table/column for it (e.g. annotated?)?
-# TODO: place button right, check in table annotations that example is not yet connected with another figure or has the least annotations yet.
-#  Then display result in the textfields
 def get_example_data() -> sqlite3.Row:
+    """
+    Retrieves a random examples from the database which is not yet annotated/connected with a figure via the
+    table contains_figure. Think if better to check first which examples are in db then generate or create random
+    numbers and test over and over if example is not annotated.
+    Maybe create another table/column for it (e.g. annotated?)?
+    TODO: place button right, check in table annotations that example is not yet connected with another figure or has the least annotations yet. Then display result in the textfields
+    """
     print("example Button")
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
@@ -89,10 +92,12 @@ def get_example_data() -> sqlite3.Row:
     return random_entry
 
 
-# Build first the options for the dropdowns from where the users can choose matching properties.
-# Based on those properties, build a query for the ontology.
 @app.route('/fyfpage', methods=('POST', "GET"))
 def fyfpage():
+    """
+    Build first the options for the dropdowns from where the users can choose matching properties.
+    Based on those properties, build a query for the ontology.
+    """
     # data = [{'name': 'red'}, {'name': 'green'}, {'name': 'blue'}]
     # get all possible variables from the ontology for the dropdown menus
     result = ""
@@ -260,9 +265,6 @@ def fyfpage():
                                    ling_area_data=ling_area_data,
                                    result=figure_infos)
 
-    # conn = get_db_connection()
-    # posts = conn.execute('SELECT * FROM posts').fetchall()
-    # conn.close()
     return render_template('fyfpage.html', ling_element_data=ling_element_data, operation_data=ling_operation_data,
                            position_data=ling_pos_data, ling_form_data=ling_form_data, ling_area_data=ling_area_data)
 
@@ -412,35 +414,6 @@ def create():
             conn.close()
             return redirect(url_for('index'))
     return render_template('create.html')
-
-
-#
-# @app.route("/<int:id>/edit", methods=("GET", "POST"))
-# def edit(id):
-#     post = get_post(id)
-#     if request.method == "POST":
-#         title = request.form["title"]
-#         content = request.form["content"]
-#         if not title:
-#             flash("Title is required!")
-#         else:
-#             conn = get_db_connection()
-#             conn.execute("UPDATE posts SET title = ?, content = ? WHERE id = ?", title, content, id)
-#             conn.commit()
-#             conn.close()
-#             return redirect(url_for("index"))
-#     return render_template("edit.html", post=post)
-#
-#
-# @app.route('/<int:id>/delete', methods=('POST',))
-# def delete(id):
-#     post = get_post(id)
-#     conn = get_db_connection()
-#     conn.execute('DELETE FROM posts WHERE id = ?', (id,))
-#     conn.commit()
-#     conn.close()
-#     flash('"{}" was successfully deleted!'.format(post['title']))
-#     return redirect(url_for('index'))
 
 
 def get_figure_label() -> list:

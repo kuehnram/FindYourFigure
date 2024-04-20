@@ -4,26 +4,25 @@
     <h1>Finde deine Figur (FyF)!</h1>
     <p>Du vermutest eine rhetorische Figur in deinem Text, aber du weißt nicht, wie sie heißt oder wie sie auf die Leser
         wirkt?
-        Finde es hier heraus! Gib dazu einfach folgende Informationen an. Wortelement und Satz für Anapher
-
+        Finde es hier heraus! Gib dazu einfach folgende Informationen an.
 
     <form method="post">
         <div class="form-group">
             <label for="text" style="display: block">Text*
                 <textarea name="text" placeholder="Gib einen Text mit einer rhetorischen Figur ein!"
                           class="form-control">{{text}}</textarea>
-                <button type="submit" class="btn btn-success float-right" id="get_example_button" name="get_example_button">Oder Beispiel aus
-                    Datenbank
+                <button type="submit" class="btn btn-success float-right" id="get_example_button"
+                        name="get_example_button">
+                    Oder Beispiel aus Datenbank
                 </button>
             </label>
-            {#</form>#}
         </div>
 
         <div class="form-group">
             <label for="context" style="display: block">Kontext
                 <textarea name="context"
-                          placeholder="Oft hilft es, wenn du einige Sätze vorher angibst, da Kontext hilfreich sein kann."
                           class="form-control">{{ context }}</textarea>
+                          placeholder="Der Kontext, in dem der 'Text' steht, also z.B. Sätze die vor oder nach der rhetorischen Figur stehen."
             </label>
         </div>
 
@@ -31,13 +30,16 @@
             <label for="author" style="display: block">Autor
                 <input type="text" name="author"
                        placeholder="Vorname Nachname" class="form-control"
-                       {% if author %} value="{{ author }}" {% endif %} value="{{ request.form['author'] }}"></label>
+                       value="{{ author }}"
+            </label>
         </div>
         <div class="form-group">
             <label for="source" style="display: block">Quelle
                 <input type="text" name="source"
                        placeholder="Name des Buchs/Titel des Artikels/etc." class="form-control"
                        {% if source %} value="{{ source }}" {% endif %}value="{{ request.form['source']  }}" ></label>
+                       value="{{ source }}"
+            </label>
         </div>
 
         <div class="input-group">
@@ -80,10 +82,6 @@
                 <option value="{{ data.lingForm }}" {% if data.lingForm == request.form['ling_form'] %}
                         selected {% endif %}>{{ data.lingForm }}</option>
             {% endfor %}
-
-            {#                {% for o in ling_form_data %}#}
-            {#                    <option value="{{ o.lingForm }}">{{ o.lingForm }}</option>#}
-            {#                {% endfor %}#}
         </select>
         </div>
         <div class="input-group">
@@ -99,90 +97,53 @@
         <div class="form-group">
             <button type="submit" class="btn btn-primary" id="send" name="send">Absenden</button>
         </div>
-
     </form>
-
-    {#    <form action="/get_random_example" method="post">#}
-    {#    <button name="forwardBtn" type="submit">Text from db</button>#}
-    {#        </form>#}
-
-
-
-
-    {#    <div class="container">#}
-    {#        {{ ergebnis }}#}
-    {#        {% for row in result %}#}
-    {#            <div class="alert alert-primary"><b>{{ row["figure_name"] }}</b>#}
-    {#                <br>#}
-    {#                {% for ro in row["definitions"] %}#}
-    {#                    {{ ro["text"] }} - {{ ro["author"] }}#}
-    {#                {% endfor %}#}
-    {##}
-    {#                <br><br>#}
-    {#                Beispiele: <br>#}
-    {#                {% for ex in row["examples"] %}#}
-    {#                    {{ ex["example_text"] }} - <em>{{ ex["example_source"] }}: {{ ex["example_author"] }} </em><br/>#}
-    {#                {% endfor %}#}
-    {#                {{ row["examples"] }}#}
-    {#            </div>#}
-    {#        {% endfor %}#}
-    {#    </div>#}
-
 
     <div class="container">
         {% if result %}
             Folgende Figuren wurden gefunden:
-        {% for row in result %}
-            <div class="form-check">
-                <div class="alert alert-primary">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            {% for row in result %}
+                <div class="form-check">
+                    <div class="alert alert-primary">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 
-                    <label class="form-check-label" for="flexCheckDefault">
-                        <b>{{ row["figure_name"] }}</b>
-                    </label>
-                    <br>
-                    Definition: <br>
-                    {% for ro in row["definitions"] %}
-                        {{ ro["text"] }} - {{ ro["author"] }}
-                    {% endfor %}
+                        <label class="form-check-label" for="flexCheckDefault">
+                            <b>{{ row["figure_name"] }}</b>
+                        </label>
+                        <br>
+                        Definition: <br>
+                        {% for ro in row["definitions"] %}
+                            {{ ro["text"] }} - {{ ro["author"] }}
+                        {% endfor %}
 
-                    <br><br>
-                    Beispiele: <br>
-                    {% for ex in row["examples"] %}
-                        {{ ex["example_text"] }} - {%  if ex["example_source"] %}<em>{{ ex["example_source"]}} {% endif %} {%  if ex["author"] %}:{{ ex["example_author"] }} {% endif %}</em><br/>
-                    {% endfor %}
-                    {#                {{ row["examples"] }}#}
+                        <br><br>
+                        Beispiele: <br>
+                        {% for ex in row["examples"] %}
+                            {{ ex["example_text"] }} - {% if ex["example_source"] %}<em>
+                            {{ ex["example_source"] }} {% endif %} {% if ex["author"] %}:
+                            {{ ex["example_author"] }} {% endif %}</em><br/>
+                        {% endfor %}
+                        {#                {{ row["examples"] }}#}
+                    </div>
                 </div>
-            </div>
-
-        {% endfor %}
-        <div class="form-group">
+            {% endfor %}
+            <div class="form-group">
                 <button type="submit" class="btn btn-primary">Figur(en) zuordnen und speichern</button>
-        </div>
+            </div>
         {% endif %}
     </div>
 
-
-        <form method="post">
-            <div class="form-group">
-                <p>Alternativ kannst du auch unser Sprachmodell nutzen! Beschreibe die Charakteristiken der Figur hier
-                    in
-                    natürlicher Sprache.</p>
-                <label for="text" style="display: block">Frag das Sprachmodell
-                    <textarea name="text" placeholder="z.B. 'In dem Satz wiederholen sich die Anfangsbuchstaben jedes Wortes.
+    <form method="post">
+        <div class="form-group">
+            <p>Alternativ kannst du auch unser Sprachmodell nutzen! Beschreibe die Charakteristiken der Figur hier
+                in
+                natürlicher Sprache.</p>
+            <label for="text" style="display: block">Frag das Sprachmodell
+                <textarea name="text" placeholder="z.B. 'In dem Satz wiederholen sich die Anfangsbuchstaben jedes Wortes.
                 Wie heißt diese rhetorische Figur?'"
-                              class="form-control">{{ request.form['llmtext'] }}</textarea>
-                </label>
-                {#</form>#}
-            </div>
-
-
-
-        </form>
-
-
-
-
-
+                          class="form-control">{{ request.form['llmtext'] }}</textarea>
+            </label>
+        </div>
+    </form>
 
 {% endblock %}

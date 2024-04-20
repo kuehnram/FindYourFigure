@@ -1,5 +1,4 @@
 import sqlite3
-import rdflib
 import app
 
 figure_labels = app.get_figure_label()
