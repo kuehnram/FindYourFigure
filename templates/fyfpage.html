@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Finde deine Figur (FyF)!</h1>
     <p>Du vermutest eine rhetorische Figur in deinem Text, aber du weißt nicht, wie sie heißt oder wie sie auf die Leser
-        wirk?
+        wirkt?
         Finde es hier heraus! Gib dazu einfach folgende Informationen an. Wortelement und Satz für Anapher
 
 
@@ -11,11 +11,8 @@
         <div class="form-group">
             <label for="text" style="display: block">Text*
                 <textarea name="text" placeholder="Gib einen Text mit einer rhetorischen Figur ein!"
-                          class="form-control">{{ request.form['text'] }}</textarea>
-                {#        </div>#}
-                {#        <div class="form-group" >#}
-                {#            <form action="/get_db_example" method="post">#}
-                <button type="button" class="btn btn-success float-right" id="get-example-button">Oder Beispiel aus
+                          class="form-control">{{text}}</textarea>
+                <button type="submit" class="btn btn-success float-right" id="get_example_button" name="get_example_button">Oder Beispiel aus
                     Datenbank
                 </button>
             </label>
@@ -23,10 +20,10 @@
         </div>
 
         <div class="form-group">
-            <label for="text" style="display: block">Kontext
-                <textarea name="text"
+            <label for="context" style="display: block">Kontext
+                <textarea name="context"
                           placeholder="Oft hilft es, wenn du einige Sätze vorher angibst, da Kontext hilfreich sein kann."
-                          class="form-control">{{ request.form['context'] }}</textarea>
+                          class="form-control">{{ context }}</textarea>
             </label>
         </div>
 
@@ -34,13 +31,13 @@
             <label for="author" style="display: block">Autor
                 <input type="text" name="author"
                        placeholder="Vorname Nachname" class="form-control"
-                       value="{{ request.form['author'] }}"></label>
+                       {% if author %} value="{{ author }}" {% endif %} value="{{ request.form['author'] }}"></label>
         </div>
         <div class="form-group">
             <label for="source" style="display: block">Quelle
                 <input type="text" name="source"
                        placeholder="Name des Buchs/Titel des Artikels/etc." class="form-control"
-                       value="{{ request.form['source'] }}"></label>
+                       {% if source %} value="{{ source }}" {% endif %}value="{{ request.form['source']  }}" ></label>
         </div>
 
         <div class="input-group">
@@ -100,7 +97,7 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Absenden</button>
+            <button type="submit" class="btn btn-primary" id="send" name="send">Absenden</button>
         </div>
 
     </form>
@@ -133,7 +130,8 @@
 
 
     <div class="container">
-        {{ ergebnis }}
+        {% if result %}
+            Folgende Figuren wurden gefunden:
         {% for row in result %}
             <div class="form-check">
                 <div class="alert alert-primary">
@@ -158,9 +156,9 @@
             </div>
 
         {% endfor %}
-        {% if ergebnis %}<div class="form-group">
+        <div class="form-group">
                 <button type="submit" class="btn btn-primary">Figur(en) zuordnen und speichern</button>
-            </div>
+        </div>
         {% endif %}
     </div>
 

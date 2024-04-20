@@ -14,11 +14,11 @@ Put SPARQL queries in a separate file
 
 """
 import random
-import re
-from flask import Flask, render_template, request, url_for, redirect, flash
 import sqlite3
-from werkzeug.exceptions import abort
+
 import rdflib
+from flask import Flask, render_template, request, url_for, redirect, flash
+from werkzeug.exceptions import abort
 
 g = rdflib.Graph()
 # g.parse('C:/Users/kuehn21/PycharmProjects/GrhootRestructured/grhoot.owl', format='application/rdf+xml')
@@ -57,6 +57,36 @@ def query_list_elements(query: str, key_name: str, no_idea: bool) -> list:
     if no_idea:
         data.append({key_name: "Keins davon/Weiß nicht"})
     return data
+
+
+# Retrieves a random examples from the database which is not yet annotated/connected with a figure via the
+# table contains_figure. Think if better to check first which examples are in db then generate or create random numbers
+# and test over and over if example is not annotated. Maybe create another table/column for it (e.g. annotated?)?
+# TODO: place button right, check in table annotations that example is not yet connected with another figure or has the least annotations yet.
+#  Then display result in the textfields
+def get_example_data() -> sqlite3.Row:
+    print("example Button")
+    connection = sqlite3.connect('database.db')
+    connection.row_factory = sqlite3.Row
+    cursor = connection.cursor()
+
+    # Get the total number of entries in the table
+    cursor.execute("SELECT COUNT(*) FROM texts")
+    total_entries = cursor.fetchone()[0]
+
+    # Generate a random offset within the total number of entries
+    random_offset = random.randint(0, total_entries - 1)
+
+    # Retrieve a random entry using LIMIT and OFFSET
+    cursor.execute("SELECT * FROM texts LIMIT 1 OFFSET ?", (random_offset,))
+    random_entry = cursor.fetchone()
+
+    # Close the connection
+    connection.close()
+    # Now 'random_entry' contains the randomly retrieved entry
+    if random_entry is None:
+        abort(404)
+    return random_entry
 
 
 # Build first the options for the dropdowns from where the users can choose matching properties.
@@ -115,12 +145,25 @@ def fyfpage():
         }
      """
     ling_area_data = query_list_elements(query=ling_area_query, key_name="lingArea", no_idea=True)
-
     if request.method == 'POST':
+
+        if "get_example_button" in request.form:
+            example = get_example_data()
+            print("here comes the examples")
+            print(example)
+            text = example["text"]  # TODO RKU in DB alle zellen strippen
+            author = example["author"]
+            source = example["source"]
+            context = example["context"]
+        else:
+            text = request.form['text'].strip() if 'text' in request.form else ""
+            author = request.form['author'].strip()
+            source = request.form['source'].strip()
+            context = request.form['context'].strip()
+
         nothing = "Keins davon/Weiß nicht"
-        author = request.form['author']
-        source = request.form['source']
-        text = request.form['text']
+        print("here are ze values")
+        print(text, context, author, source)
         operation = request.form['operation']
         operation_position = request.form['operation_position']
         # convert to CamelCase => classnames in ontology
@@ -192,22 +235,29 @@ def fyfpage():
               }}
                    """
 
-        # result = g.query(figure_query) # TODO change in the end, static test_query only for testing purposes
-        result = g.query(test_query)
-        result = parse_figure_name(result)
         figure_infos = []
+        if "send" in request.form:
+            # result = g.query(figure_query) # TODO change in the end, static test_query only for testing purposes
+            result = g.query(test_query)
+            result = parse_figure_name(result)
 
-        for figure_name in result:
-            figure_info = {"figure_name": figure_name, "definitions": get_figure_definition(figure_name),
-                           "examples": get_examples(figure_name)}
-            figure_infos.append(figure_info)
+            for figure_name in result:
+                figure_info = {"figure_name": figure_name, "definitions": get_figure_definition(figure_name),
+                               "examples": get_examples(figure_name)}
+                figure_infos.append(figure_info)
         if not text:
             flash('Bitte gib einen Text ein!')
         else:
-            return render_template('fyfpage.html', ling_element_data=ling_element_data,
+            return render_template('fyfpage.html',
+                                   text=text,
+                                   context=context,
+                                   author=author,
+                                   source=source,
+                                   ling_element_data=ling_element_data,
                                    operation_data=ling_operation_data,
-                                   position_data=ling_pos_data, ling_form_data=ling_form_data,
-                                   ling_area_data=ling_area_data, ergebnis="Folgende Figuren wurden gefunden:",
+                                   position_data=ling_pos_data,
+                                   ling_form_data=ling_form_data,
+                                   ling_area_data=ling_area_data,
                                    result=figure_infos)
 
     # conn = get_db_connection()
@@ -293,37 +343,6 @@ def get_examples(figure_name):
     return examples
 
 
-# Retrieves a random examples from the database which is not yet annotated/connected with a figure via the
-# table contains_figure. Think if better to check first which examples are in db then generate or create random numbers
-# and test over and over if example is not annotated. Maybe create another table/column for it (e.g. annotated?)?
-# TODO: place button right, check in table annotations that example is not yet connected with another figure or has the least annotations yet.
-#  Then display result in the textfields
-@app.route("/get_random_example", methods=['POST', 'GET'])
-def get_random_example():
-    connection = sqlite3.connect('database.db')
-    cursor = connection.cursor()
-
-    # Get the total number of entries in the table
-    cursor.execute("SELECT COUNT(*) FROM examples")
-    total_entries = cursor.fetchone()[0]
-
-    # Generate a random offset within the total number of entries
-    random_offset = random.randint(0, total_entries - 1)
-
-    # Retrieve a random entry using LIMIT and OFFSET
-    cursor.execute("SELECT * FROM examples LIMIT 1 OFFSET ?", (random_offset,))
-    random_entry = cursor.fetchone()
-
-    # Close the connection
-    connection.close()
-
-    # Now 'random_entry' contains the randomly retrieved entry
-    print(random_entry)
-    if random_entry is None:
-        abort(404)
-    return render_template("fyfpage.html", random_entry=random_entry)
-
-
 @app.route("/figure_information", methods=['POST', 'GET'])
 def figure_information():
     figure_label_query = """SELECT ?label
@@ -380,14 +399,15 @@ def about():
 def create():
     if request.method == 'POST':
         author = request.form['author']
+        context = request.form['context']
         source = request.form['source']
         text = request.form['text']
         if not text:
-            flash('A text is required!')
+            flash('Bitte gib einen Text ein!')
         else:
             conn = get_db_connection()
-            conn.execute('INSERT INTO examples (example_text, example_author, example_source) VALUES (?, ?, ?)',
-                         (text, author, source))
+            conn.execute('INSERT INTO texts (text, context, author, source) VALUES (?, ?, ?, ?)',
+                         (text, context, author, source))
             conn.commit()
             conn.close()
             return redirect(url_for('index'))
