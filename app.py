@@ -160,11 +160,13 @@ def fyfpage():
             author = example["author"]
             source = example["source"]
             context = example["context"]
+            text_id = example["id"]
         else:
             text = request.form['text'].strip() if 'text' in request.form else ""
             author = request.form['author'].strip()
             source = request.form['source'].strip()
             context = request.form['context'].strip()
+            text_id = request.form['text_id'] if 'text_id' in request.form else None
 
         nothing = "Keins davon/Weiß nicht"
         print("here are ze values")
@@ -240,6 +242,8 @@ def fyfpage():
               }}
                    """
 
+        readonly = any([has_value(form_value) for form_value in [text, text_id, context, author, source]])
+
         figure_infos = []
         if "send" in request.form:
             # result = g.query(figure_query) # TODO change in the end, static test_query only for testing purposes
@@ -254,7 +258,9 @@ def fyfpage():
             flash('Bitte gib einen Text ein!')
         else:
             return render_template('fyfpage.html',
+                                   readonly=readonly,
                                    text=text,
+                                   text_id=text_id,
                                    context=context,
                                    author=author,
                                    source=source,
@@ -267,6 +273,11 @@ def fyfpage():
 
     return render_template('fyfpage.html', ling_element_data=ling_element_data, operation_data=ling_operation_data,
                            position_data=ling_pos_data, ling_form_data=ling_form_data, ling_area_data=ling_area_data)
+
+
+def has_value(form_value: str) -> bool:
+    """Checks that a given form value has an actual value (i.e. is set and does not only consist of whitespace"""
+    return form_value is not None and str(form_value).strip() != ""
 
 
 def parse_figure_name(result) -> list:
