@@ -95,6 +95,20 @@ def get_example_data() -> sqlite3.Row:
     return random_entry
 
 
+@app.route('/annotation-save', methods=['POST', 'GET'])
+def annotation_save():
+    if request.method == "POST":
+        figure_names: List[str] = request.form.getlist('figure_names')
+        text_id: int = int(request.form.get('text_id'))
+        figure_ids = [db.get_figure_id_by_name(figure_name.strip()) for figure_name in figure_names]
+
+        db.link_text_with_figures(text_id, figure_ids)
+
+        return render_template("annotation-save.html")
+    else:
+        return Response("<a href='/fyfpage'>Bitte hier Daten eingeben.</a>", status=http.HTTPStatus.BAD_REQUEST)
+
+
 @app.route('/fyfpage', methods=('POST', "GET"))
 def fyfpage():
     """
