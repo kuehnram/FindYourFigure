@@ -263,6 +263,11 @@ def fyfpage():
 
         figure_infos = []
         if "send" in request.form:
+            # Only save the new text if it does not yet have an ID
+            if text_id is None or text_id.strip() == "":
+                new_text_id = db.save_new_text(text, context, author, source)
+                text_id = new_text_id
+
             # result = g.query(figure_query) # TODO change in the end, static test_query only for testing purposes
             result = g.query(test_query)
             result = parse_figure_name(result)
