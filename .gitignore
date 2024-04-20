@@ -183,3 +183,13 @@ fabric.properties
 
 # idea folder, uncomment if you don't need it
 # .idea
+/.idea/dataSources.xml
+/.idea/jsLibraryMappings.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/OntologyWebApp.iml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/sqldialects.xml
+/.idea/vcs.xml
+/database.db
