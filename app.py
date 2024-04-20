@@ -70,7 +70,8 @@ def get_example_data() -> sqlite3.Row:
     table contains_figure. Think if better to check first which examples are in db then generate or create random
     numbers and test over and over if example is not annotated.
     Maybe create another table/column for it (e.g. annotated?)?
-    TODO: place button right, check in table annotations that example is not yet connected with another figure or has the least annotations yet. Then display result in the textfields
+    TODO: place button right, check in table annotations that example is not yet connected with another figure or has
+    the least annotations yet. Then display result in the textfields
     """
     print("example Button")
     connection = db.get_db_connection()
@@ -116,8 +117,6 @@ def fyfpage():
     Based on those properties, build a query for the ontology.
     """
     # data = [{'name': 'red'}, {'name': 'green'}, {'name': 'blue'}]
-    # get all possible variables from the ontology for the dropdown menus
-    result = ""
     ling_pos_query = """
     SELECT ?subclassLabel
     WHERE {
@@ -268,8 +267,8 @@ def fyfpage():
                 new_text_id = db.save_new_text(text, context, author, source)
                 text_id = new_text_id
 
-            # result = g.query(figure_query) # TODO change in the end, static test_query only for testing purposes
-            result = g.query(test_query)
+            result = g.query(figure_query)
+            # result = g.query(test_query) # static test_query only for testing purposes
             result = parse_figure_name(result)
 
             for figure_name in result:
