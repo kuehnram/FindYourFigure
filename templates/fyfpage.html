@@ -5,7 +5,7 @@
     <p>Du vermutest eine rhetorische Figur in deinem Text, aber du weißt nicht, wie sie heißt oder wie sie auf die Leser
         wirkt?
         Finde es hier heraus! Gib dazu einfach folgende Informationen an.
-
+{% block inputtext %}
     <form method="post">
         <div class="form-group">
             <label for="text" style="display: block">Text*
@@ -42,7 +42,8 @@
                        {% if readonly %}readonly="readonly"{% endif %}/>
             </label>
         </div>
-
+{% endblock inputtext %}
+{% block selection %}
         <div class="input-group">
             <span class="input-group-addon">Bitte wähle, welche Operation stattfindet: </span>
             <label for="operation"></label><select name="operation" class="selectpicker form-control" id="operation">
@@ -100,7 +101,7 @@
             <button type="submit" class="btn btn-primary" id="send" name="send">Absenden</button>
         </div>
     </form>
-
+{% endblock selection %}
 
     <form target="_self" method="post" action="/annotation-save">
         <div class="container">
@@ -137,21 +138,10 @@
                     <input type="hidden" name="text_id" value="{{ text_id }}"/>
                     <button type="submit" class="btn btn-primary">Figur(en) zuordnen und speichern</button>
                 </div>
+
             {% endif %}
         </div>
     </form>
 
-    <form method="post">
-        <div class="form-group">
-            <p>Alternativ kannst du auch unser Sprachmodell nutzen! Beschreibe die Charakteristiken der Figur hier
-                in
-                natürlicher Sprache.</p>
-            <label for="text" style="display: block">Frag das Sprachmodell
-                <textarea name="text" placeholder="z.B. 'In dem Satz wiederholen sich die Anfangsbuchstaben jedes Wortes.
-                Wie heißt diese rhetorische Figur?'"
-                          class="form-control">{{ request.form['llmtext'] }}</textarea>
-            </label>
-        </div>
-    </form>
 
 {% endblock %}

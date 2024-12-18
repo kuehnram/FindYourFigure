@@ -1,17 +1,12 @@
 """
-Tutorial: https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
-
-Things to do:
-Add database functionality
-
-make it look nicer
-
 Add Internationalization
 https://medium.com/@nicolas_84494/flask-create-a-multilingual-web-application-with-language-specific-urls-5d994344f5fd
 https://phrase.com/blog/posts/flask-app-tutorial-i18n/
 
 Put SPARQL queries in a separate file
 """
+import language_tool_python
+
 import http
 import random
 import sqlite3
@@ -23,21 +18,59 @@ from werkzeug.exceptions import abort
 
 import db
 
-g = rdflib.Graph()
-# g.parse('C:/Users/kuehn21/PycharmProjects/GrhootRestructured/grhoot.owl', format='application/rdf+xml')
-g.parse('./grhootNewSmall.owl', format='application/rdf+xml')
+import openai
+from llama_index.core import (
+    ServiceContext,
+    StorageContext,
+    VectorStoreIndex,
+    load_index_from_storage,
+)
+from llama_index.core.node_parser import HierarchicalNodeParser
+from llama_index.core.node_parser import get_leaf_nodes
+from llama_index.core import StorageContext, load_index_from_storage
+from llama_index.core.retrievers import AutoMergingRetriever
+from llama_index.core.indices.postprocessor import SentenceTransformerRerank
+from llama_index.core.query_engine import RetrieverQueryEngine
+from llama_index.llms.openai import OpenAI
+from llama_index.core import (
+    ServiceContext,
+    StorageContext,
+    VectorStoreIndex,
+    load_index_from_storage,
+)
+openai.api_key = "INSERT_YOUR_API_KEY_HERE"
 
-webprotege = rdflib.Namespace('http://webprotege.stanford.edu/')
-gr = rdflib.Namespace('https://ramonakuehn.de/grhoot.owl#')
-rdfs = rdflib.Namespace('http://www.w3.org/2000/01/rdf-schema#')
-owl = rdflib.Namespace('http://www.w3.org/2002/07/owl#')
+
+
+import langdetect # for language detection of user input
+# Spellchecker for user input
+tool = language_tool_python.LanguageTool('de')
+
+g = rdflib.Graph()
+# g.parse('./grhootNewSmall.owl', format='application/rdf+xml')
+g.parse('./grhoot_reified.owl', format='application/rdf+xml')
+
+#webprotege = rdflib.Namespace('http://webprotege.stanford.edu/')
+gr = rdflib.Namespace('https://ramonakuehn.de/grhoot.owl/')
+rdfs = rdflib.Namespace('http://www.w3.org/2000/01/rdf-schema/')
+owl = rdflib.Namespace('http://www.w3.org/2002/07/owl/')
 g.bind("owl", owl)
 g.bind("rdfs", rdfs)
 g.bind("gr", gr)
-g.bind("webprotege", webprotege)
+#g.bind("webprotege", webprotege)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
+
+get_all_figure_labels_query = """SELECT ?label
+                    WHERE {
+                      ?subclass rdf:type owl:Class ;
+                                rdfs:subClassOf gr:RhetorischeFigur ;
+                                rdfs:label ?label
+                                Filter (LANG(?label) = 'de')
+                        }
+                        """
+
 
 
 @app.route('/')
@@ -70,22 +103,22 @@ def get_example_data() -> sqlite3.Row:
     table contains_figure. Think if better to check first which examples are in db then generate or create random
     numbers and test over and over if example is not annotated.
     Maybe create another table/column for it (e.g. annotated?)?
-    TODO: place button right, check in table annotations that example is not yet connected with another figure or has
-    the least annotations yet. Then display result in the textfields
+    TODO: check in table annotations that example is not yet connected with another figure or has
+    the least annotations yet.
     """
     print("example Button")
     connection = db.get_db_connection()
     cursor = connection.cursor()
 
     # Get the total number of entries in the table
-    cursor.execute("SELECT COUNT(*) FROM texts")
+    cursor.execute("SELECT COUNT(*) FROM texts WHERE is_harmful <> 1")
     total_entries = cursor.fetchone()[0]
 
     # Generate a random offset within the total number of entries
     random_offset = random.randint(0, total_entries - 1)
 
-    # Retrieve a random entry using LIMIT and OFFSET
-    cursor.execute("SELECT * FROM texts LIMIT 1 OFFSET ?", (random_offset,))
+    # Retrieve a random entry using LIMIT and OFFSET, prevent harmful texts
+    cursor.execute("SELECT * FROM texts WHERE is_harmful <> 1 LIMIT 1 OFFSET ?", (random_offset,))
     random_entry = cursor.fetchone()
 
     # Close the connection
@@ -95,6 +128,80 @@ def get_example_data() -> sqlite3.Row:
         abort(http.HTTPStatus.INTERNAL_SERVER_ERROR, f"No examples found")
     return random_entry
 
+
+def get_automerging_query_engine(
+    automerging_index,
+    similarity_top_k,
+    rerank_top_n,
+):
+    base_retriever = automerging_index.as_retriever(similarity_top_k=similarity_top_k)
+    retriever = AutoMergingRetriever(
+        base_retriever, automerging_index.storage_context, verbose=True
+    )
+    rerank = SentenceTransformerRerank(
+        top_n=rerank_top_n, model="BAAI/bge-reranker-large"
+    )
+    auto_merging_engine = RetrieverQueryEngine.from_args(
+        retriever, node_postprocessors=[rerank]
+    )
+
+    return auto_merging_engine
+
+
+
+@app.route('/llm', methods=['POST', 'GET'])
+def ask_llm():
+    text = ""
+    author = ""
+    source = ""
+    context = ""
+    text_id = None
+    question = ""
+
+    if request.method == 'POST':
+        if "get_example_button" in request.form:
+            example = get_example_data()
+            text = example.get("text", "").strip()
+            author = example.get("author", "").strip()
+            source = example.get("source", "").strip()
+            context = example.get("context", "").strip()
+            text_id = example.get("id", "").strip()
+        else:
+            text = request.form.get('text', "").strip()
+            author = request.form.get('author', "").strip()
+            source = request.form.get('source', "").strip()
+            context = request.form.get('context', "").strip()
+            text_id = request.form.get('text_id', "").strip()
+
+        question = request.form.get('prompttext', "").strip()
+
+    message = ("Please insert the OpenAI API key in the app.py to use this functionality. In the live-version of"
+               "the website, we will of course include a key.")
+
+    embed_model = "local:BAAI/bge-m3"
+    llm = OpenAI(model="gpt-3.5-turbo", temperature=0.1)
+
+    merging_context = ServiceContext.from_defaults(
+        llm=llm,
+        embed_model=embed_model,
+    )
+    save_dir = "./merging_index_grhoot"
+
+    index = load_index_from_storage(
+        StorageContext.from_defaults(persist_dir=save_dir),
+        service_context=merging_context)
+
+    automerging_query_engine = get_automerging_query_engine(index, similarity_top_k=6, rerank_top_n=3)
+    auto_merging_response = automerging_query_engine.query(question) + " Bitte antworte nur auf Deutsch!"
+    llm_response = auto_merging_response
+
+    return render_template("llm.html",
+                           text=text,
+                           text_id=text_id,
+                           context=context,
+                           author=author,
+                           source=source,
+                           llm_response=llm_response)
 
 @app.route('/annotation-save', methods=['POST', 'GET'])
 def annotation_save():
@@ -108,6 +215,104 @@ def annotation_save():
         return render_template("annotation-save.html")
     else:
         return Response("<a href='/fyfpage'>Bitte hier Daten eingeben.</a>", status=http.HTTPStatus.BAD_REQUEST)
+
+
+
+
+def query_builder_result(ling_element, ling_area, ling_form, operation, operation_position, nothing):
+    ling_elem_block = f"""
+           SELECT ?label
+           WHERE {{
+             ?class rdf:type owl:Class ;
+                   rdfs:label ?label ;
+                   rdfs:subClassOf [
+                     rdf:type owl:Restriction ;
+                     owl:onProperty gr:betroffenesElement ;
+                     owl:someValuesFrom gr:{ling_element} ;
+                   ] .
+           Filter (LANG(?label) = 'de')
+           }}"""
+
+    ling_area_block = f"""
+    SELECT ?label
+           WHERE {{
+             ?class rdf:type owl:Class ;
+                   rdfs:label ?label ;
+       rdfs:subClassOf [
+                     rdf:type owl:Restriction ;
+                     owl:onProperty gr:liegtImBereich ;
+                     owl:someValuesFrom gr:{ling_area} ;
+                   ];
+                    Filter (LANG(?label) = 'de')
+                    }}"""
+
+    operation_block = f"""
+    SELECT ?label
+           WHERE {{
+             ?class rdf:type owl:Class ;
+                   rdfs:label ?label ;
+       rdfs:subClassOf [
+                     rdf:type owl:Restriction ;
+                     owl:onProperty gr:hatOperation ;
+                     owl:someValuesFrom gr:{operation} ;
+                   ];
+                    Filter (LANG(?label) = 'de')}}"""
+
+    operation_position_block = f"""
+        SELECT ?label
+           WHERE {{
+             ?class rdf:type owl:Class ;
+                   rdfs:label ?label ;
+       rdfs:subClassOf [
+                             rdf:type owl:Restriction ;
+                             owl:onProperty gr:istInPosition ;
+                             owl:someValuesFrom gr:{operation_position} ;
+                           ]; 
+                           Filter (LANG(?label) = 'de')
+                           }} """
+
+    ling_form_block = f"""
+        SELECT ?label
+           WHERE {{
+             ?class rdf:type owl:Class ;
+                   rdfs:label ?label ;
+       rdfs:subClassOf [
+                     rdf:type owl:Restriction ;
+                     owl:onProperty gr:hatOperationsform ;
+                     owl:someValuesFrom gr:{ling_form} ;
+                   ];  
+                   Filter (LANG(?label) = 'de')}} """
+
+
+    # Query only where it is not "Keins davon/Weiß nicht", set "Keins davon" to all figures
+    all_figures = []
+    result = g.query(get_all_figure_labels_query)
+    for res in result:
+        all_figures.append(str(res['label']))
+    #print(all_figures)
+
+
+    result_ling_area = parse_figure_name(g.query(ling_area_block)) if ling_area != nothing else ""
+    result_ling_elem = parse_figure_name(g.query(ling_elem_block)) if ling_element != nothing else ""
+    result_ling_form = parse_figure_name(g.query(ling_form_block)) if ling_form != nothing else ""
+    result_operation = parse_figure_name(g.query(operation_block)) if operation != nothing else ""
+    result_position = parse_figure_name(g.query(operation_position_block)) if operation_position != nothing else ""
+
+    #resultlist = list(set(result_ling_area) & set(result_ling_elem) & set(result_ling_form) & set(result_operation) & set(result_position))
+
+    # remove empty sets and form intersection to find matching rhetorical figures
+    non_empty_sets = [result_set for result_set in [
+        result_ling_elem, result_ling_form, result_operation, result_position, result_ling_area
+    ] if result_set]
+
+    if non_empty_sets:
+        resultlist = list(set.intersection(*map(set, non_empty_sets)))
+    else:
+        resultlist = all_figures
+    print("here is ze resultlist:")
+    print(resultlist)
+    return resultlist
+
 
 
 @app.route('/fyfpage', methods=('POST', "GET"))
@@ -151,7 +356,7 @@ def fyfpage():
         SELECT ?subclassLabel
         WHERE {
           ?subclass rdf:type owl:Class ;
-                    rdfs:subClassOf webprotege:LinguistischeForm ;
+                    rdfs:subClassOf gr:LinguistischeForm ;
                     rdfs:label ?subclassLabel .
         }
         """
@@ -172,7 +377,7 @@ def fyfpage():
             example = get_example_data()
             print("here comes the examples")
             print(example)
-            text = example["text"]  # TODO RKU in DB alle zellen strippen
+            text = example["text"]
             author = example["author"]
             source = example["source"]
             context = example["context"]
@@ -185,8 +390,6 @@ def fyfpage():
             text_id = request.form['text_id'] if 'text_id' in request.form else None
 
         nothing = "Keins davon/Weiß nicht"
-        print("here are ze values")
-        print(text, context, author, source)
         operation = request.form['operation']
         operation_position = request.form['operation_position']
         # convert to CamelCase => classnames in ontology
@@ -196,88 +399,89 @@ def fyfpage():
         ling_form = ling_form.title().replace(" ", "") if ling_form != nothing else nothing
         ling_area = request.form['ling_area']
 
-        ling_elem_block = f"""rdfs:subClassOf [
-                      rdf:type owl:Restriction ;
-                      owl:onProperty webprotege:betroffenensElement ;
-                      owl:someValuesFrom webprotege:{ling_element} ;
-                    ]; """
-        ling_area_block = f"""rdfs:subClassOf [
-                      rdf:type owl:Restriction ;
-                      owl:onProperty gr:liegtImBereich ;
-                      owl:someValuesFrom webprotege:{ling_area} ;
-                    ]; """
-
-        operation_block = f"""rdfs:subClassOf [
-                      rdf:type owl:Restriction ;
-                      owl:onProperty webprotege:hatOperation ;
-                      owl:someValuesFrom webprotege:{operation} ;
-                    ]; """
-
-        operation_position_block = f"""rdfs:subClassOf [
-                              rdf:type owl:Restriction ;
-                              owl:onProperty gr:istInPosition ;
-                              owl:someValuesFrom webprotege:{operation_position} ;
-                            ]; """
-
-        ling_form_block = f"""rdfs:subClassOf [
-                      rdf:type owl:Restriction ;
-                      owl:onProperty webprotege:hatOperationsform ;
-                      owl:someValuesFrom webprotege:{ling_form} ;
-                    ]; """
-
-        figure_query = f"""
-            SELECT ?label
-            WHERE {{
-              ?class rdf:type owl:Class ;
-                    rdfs:label ?label ;
-                    {ling_elem_block if ling_element != nothing else ""}
-                    {ling_area_block if ling_area != nothing else ""}
-                    {operation_block if operation != nothing else ""}
-                    {operation_position_block if operation_position != nothing else ""}
-                    {ling_form_block if ling_form != nothing else ""}
-                    FILTER (LANG(?label) = 'de').
-            }}
-            """
-
-        test_query = f"""
-              SELECT ?label
-              WHERE {{
-                ?class rdf:type owl:Class ;
-                      rdfs:label ?label ;
-                      rdfs:subClassOf [
-                        rdf:type owl:Restriction ;
-                        owl:onProperty webprotege:betroffenensElement ;
-                        owl:someValuesFrom webprotege:Wortelement ;
-                      ] ;
-                      rdfs:subClassOf [
-                        rdf:type owl:Restriction ;
-                        owl:onProperty webprotege:hatOperationsform ;
-                        owl:someValuesFrom webprotege:SelbeForm ;
-                       ] 
-               FILTER (LANG(?label) = 'de').       
-              }}
-                   """
+        # ling_elem_block = f"""rdfs:subClassOf [
+        #               rdf:type owl:Restriction ;
+        #               owl:onProperty gr:betroffenesElement ;
+        #               owl:someValuesFrom gr:{ling_element} ;
+        #             ]; """
+        # ling_area_block = f"""rdfs:subClassOf [
+        #               rdf:type owl:Restriction ;
+        #               owl:onProperty gr:liegtImBereich ;
+        #               owl:someValuesFrom gr:{ling_area} ;
+        #             ]; """
+        #
+        # operation_block = f"""rdfs:subClassOf [
+        #               rdf:type owl:Restriction ;
+        #               owl:onProperty gr:hatOperation ;
+        #               owl:someValuesFrom gr:{operation} ;
+        #             ]; """
+        #
+        # operation_position_block = f"""rdfs:subClassOf [
+        #                       rdf:type owl:Restriction ;
+        #                       owl:onProperty gr:istInPosition ;
+        #                       owl:someValuesFrom gr:{operation_position} ;
+        #                     ]; """
+        #
+        # ling_form_block = f"""rdfs:subClassOf [
+        #               rdf:type owl:Restriction ;
+        #               owl:onProperty gr:hatOperationsform ;
+        #               owl:someValuesFrom gr:{ling_form} ;
+        #             ]; """
+        #
+        # figure_query = f"""
+        #     SELECT ?label
+        #     WHERE {{
+        #       ?class rdf:type owl:Class ;
+        #             rdfs:label ?label ;
+        #             {ling_elem_block if ling_element != nothing else ""}
+        #             {ling_area_block if ling_area != nothing else ""}
+        #             {operation_block if operation != nothing else ""}
+        #             {operation_position_block if operation_position != nothing else ""}
+        #             {ling_form_block if ling_form != nothing else ""}
+        #             FILTER (LANG(?label) = 'de').
+        #     }}
+        #     """
+        # print(figure_query)
+        #
+        # test_query = f"""
+        #       SELECT ?label
+        #       WHERE {{
+        #         ?class rdf:type owl:Class ;
+        #               rdfs:label ?label ;
+        #               rdfs:subClassOf [
+        #                 rdf:type owl:Restriction ;
+        #                 owl:onProperty gr:betroffenesElement ;
+        #                 owl:someValuesFrom gr:Wortelement ;
+        #               ] ;
+        #               rdfs:subClassOf [
+        #                 rdf:type owl:Restriction ;
+        #                 owl:onProperty gr:hatOperationsform ;
+        #                 owl:someValuesFrom gr:SelbeForm ;
+        #                ]
+        #        FILTER (LANG(?label) = 'de').
+        #       }}
+        #            """
 
         readonly = any([has_value(form_value) for form_value in [text, text_id, context, author, source]])
 
         figure_infos = []
+        if not text:
+            flash('Bitte gib einen Text ein!')
         if "send" in request.form:
             # Only save the new text if it does not yet have an ID
             if text_id is None or text_id.strip() == "":
                 new_text_id = db.save_new_text(text, context, author, source)
                 text_id = new_text_id
 
-            result = g.query(figure_query)
-            # result = g.query(test_query) # static test_query only for testing purposes
-            result = parse_figure_name(result)
+            result = query_builder_result(ling_element, ling_area, ling_form, operation, operation_position, nothing)
+
+            print(f"here are the results: {result}")
 
             for figure_name in result:
                 figure_info = {"figure_name": figure_name, "definitions": get_figure_definition(figure_name),
                                "examples": get_examples(figure_name)}
                 figure_infos.append(figure_info)
-        if not text:
-            flash('Bitte gib einen Text ein!')
-        else:
+        if text:
             return render_template('fyfpage.html',
                                    readonly=readonly,
                                    text=text,
@@ -320,7 +524,7 @@ def get_figure_definition(figure_name: str) -> list:
                         ?class rdf:type owl:Class ;
                         rdfs:label "{figure_name}"@de  ;
                         rdfs:subClassOf [
-                        owl:onProperty webprotege:hatDefinition ;
+                        owl:onProperty gr:hatDefinition ;
                         owl:hasValue ?value ;
                      ] .    }}
                     """
@@ -329,7 +533,7 @@ def get_figure_definition(figure_name: str) -> list:
         value_uri = result['value'].toPython()
         def_text_query = f""" SELECT ?definitionText
                  WHERE {{
-                      <{value_uri}> webprotege:hatDefinitionsText ?definitionText .
+                      <{value_uri}> gr:hatDefinitionsText ?definitionText .
                      }}
                 """
 
@@ -339,31 +543,45 @@ def get_figure_definition(figure_name: str) -> list:
                                 'author': ""}
             label_literal = def_text['definitionText']
             definition_entry['text'] = label_literal.value
+
+            # add author of a definition
             def_author_query = f""" SELECT ?definitionAutor
                  WHERE {{
-                      <{value_uri}> webprotege:istAutor ?definitionAutor .
+                      <{value_uri}> gr:istAutor ?definitionAutor .
                      }}
                 """
             def_author_result = g.query(def_author_query)
             for def_author in def_author_result:
                 label_literal = def_author['definitionAutor']
-                label_value = label_literal.value
                 definition_entry['author'] = label_literal.value
-                definitions.append(definition_entry)
+
+            # add source of a definition
+            def_source_query = f"""
+                        SELECT ?definitionSource
+                        WHERE {{
+                        <{value_uri}> gr:istQuelle ?definitionSource .
+                            }}
+                        """
+            for def_source in g.query(def_source_query):
+                label_literal = def_source['definitionSource']
+                definition_entry['source'] = label_literal.value
+            definitions.append(definition_entry)
 
     return definitions
 
 
 def get_examples(figure_name):
+    figure_name = figure_name.replace(" ", "") # remove spaces from figure names (e.g., "Etymolog. Figur")
     examples = []
     example_query = f""" SELECT ?instance ?author ?source ?example
                         WHERE {{
-                          ?instance rdf:type webprotege:{figure_name} .
-                          OPTIONAL {{ ?instance webprotege:istAutor ?author . }}
-                          OPTIONAL {{ ?instance webprotege:istBeispielQuelle ?source . }}
+                          ?instance rdf:type gr:{figure_name} .
+                          OPTIONAL {{ ?instance gr:istAutor ?author . }}
+                          OPTIONAL {{ ?instance gr:istQuelle ?source . }}
                           OPTIONAL {{ ?instance gr:istBeispiel ?example . }}
                             }}
                         """
+    print(f"figure name in examples: {figure_name}")
     example_query_result = g.query(example_query)
     for res in example_query_result:
         example_entry = {
@@ -372,6 +590,7 @@ def get_examples(figure_name):
             'example_source': res["source"].value if res["source"] else None,
             'example_author': res["author"].value if res["author"] else None
         }
+        print(f"example entry {example_entry}")
         examples.append(example_entry)
 
     return examples
@@ -379,22 +598,15 @@ def get_examples(figure_name):
 
 @app.route("/figure_information", methods=['POST', 'GET'])
 def figure_information():
-    figure_label_query = """SELECT ?label
-                        WHERE {
-                          ?subclass rdf:type owl:Class ;
-                                    rdfs:subClassOf gr:RhetorischeFigur ;
-                                    rdfs:label ?label
-                                    Filter (LANG(?label) = 'de')
-                            }
-                            """
-    figure_data = query_list_elements(query=figure_label_query, key_name="figure", no_idea=False)
+
+    figure_data = query_list_elements(query=get_all_figure_labels_query, key_name="figure", no_idea=False)
 
     if request.method == 'POST':
         figure = request.form['figure']
         figure_detail_infos = []
         figure_detail_info = {"figure_name": figure, "definitions": get_figure_definition(figure),
-                              "examples": get_examples(figure), "position": "Anfang",
-                              "rhetoricalClass": "Betonungsfigur"}  # etc...
+                              "examples": get_examples(figure)}
+                                #"position": "Anfang", "rhetoricalClass": "Betonungsfigur"}  # etc...
         figure_detail_infos.append(figure_detail_info)
         return render_template("figure_info.html", figure_names=figure_data,
                                ergebnis="Hier sind alle Infos zu dieser Figur:",
@@ -413,6 +625,25 @@ def about():
     return render_template("about.html")
 
 
+# check is user input has
+# 1. resonable length
+# 2. is German
+# 3. is not harmful
+def is_invalid_input(text):
+    # 1. Check reasonable text length
+    if len(text) < 10 or len(text) > 1000:
+        return True
+
+    # 2. Check language
+    lang = langdetect.detect(text)
+    if lang != 'de':  # Assuming 'en' is the expected language
+        return True
+
+    # 3. hate speech
+
+    return False
+
+
 @app.route('/create', methods=('POST', 'GET'))
 def create():
     if request.method == 'POST':
@@ -424,8 +655,8 @@ def create():
             flash('Bitte gib einen Text ein!')
         else:
             conn = db.get_db_connection()
-            conn.execute('INSERT INTO texts (text, context, author, source) VALUES (?, ?, ?, ?)',
-                         (text, context, author, source))
+            conn.execute('INSERT INTO texts (text, context, author, source, is_invalid) VALUES (?, ?, ?, ?, ?)',
+                         (text, context, author, source, is_invalid_input(text)))
             conn.commit()
             conn.close()
             return redirect(url_for('index'))
@@ -433,20 +664,14 @@ def create():
 
 
 def get_figure_label() -> list:
-    figure_query = """SELECT ?label
-                         WHERE {
-                           ?subclass rdf:type owl:Class ;
-                                     rdfs:subClassOf gr:RhetorischeFigur ;
-                                     rdfs:label ?label
-                                     Filter (LANG(?label) = 'de')
-                             }
-                             """
-    result = g.query(figure_query)
+    result = g.query(get_all_figure_labels_query)
     data = []
     for row in result:
         value_element = row[0]
         data.append(value_element)
     return data
+
+
 
 
 if __name__ == '__main__':

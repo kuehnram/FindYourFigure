@@ -8,6 +8,8 @@ CREATE TABLE texts (
     context VARCHAR(255),
     author VARCHAR (255),
     source VARCHAR (255),
+    is_invalid BOOLEAN,
+    is_harmful BOOLEAN,
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

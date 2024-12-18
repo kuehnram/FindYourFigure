@@ -13,7 +13,10 @@ cursor = connection.cursor()
 # cursor.execute("INSERT INTO texts (text, context, author, source) VALUES (?)",
 #                ('Veni, vidi, vici', '', 'Caesar', '')
 #                )
-cursor.execute("INSERT INTO texts (text, context, author, source) VALUES ('Veni, vidi, vici', '', 'Caesar', '')"
+cursor.execute("INSERT INTO texts (text, context, author, source, is_invalid, is_harmful) VALUES ('Veni, vidi, vici', '', 'Caesar', '', FALSE, TRUE)"
+               )
+
+cursor.execute("INSERT INTO texts (text, context, author, source, is_invalid, is_harmful) VALUES ('Heute back ich, morgen brau ich', '', '', 'Rumpelstilzchen', FALSE, FALSE)"
                )
 
 

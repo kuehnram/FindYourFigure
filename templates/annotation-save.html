@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>foo</title>
-    <marquee><h1 style="background-color: aqua; color: deeppink;">zänks for your submission</h1></marquee>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+    <h1>Vielen Dank für deinen Beitrag!</h1>
+<p><a href="fyfpage.html">Hier</a> kannst du weitere Figuren annotieren.
+{% endblock %}
