@@ -39,7 +39,7 @@
         </div>
          <div class="form-group">
             <label for="prompttext" style="display: block">Prompt für das Sprachmodell
-                <textarea name="text" placeholder="Gib hier die Frage oder Anweisung für das Sprachmodell ein!"
+                <textarea name="prompttext" placeholder="Gib hier die Frage oder Anweisung für das Sprachmodell ein!"
                           class="form-control">{{ prompttext }}</textarea>
             </label>
         </div>
@@ -50,6 +50,30 @@
 
      {% if llm_response %}
     <p>Das ist die Antwort des Sprachmodells: {{ llm_response }}</p>
+
+
+
+      <p>Wähle die passende Figur aus der Liste: </p>
+     <form method="post">
+
+        <div class="input-group">
+            <span class="input-group-addon">Bitte wähle die Figur: </span>
+            <label for="figure"></label><select name="figure" class="selectpicker form-control" id="figure">
+                {% for data in figure_names %}
+                    <option value="{{ data.figure }}" {% if data.figure == request.form['figure'] %}
+                            selected {% endif %}>{{ data.figure }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Annotieren!</button>
+        </div>
+
+    </form>
+
+
+     {% endif %}
 
         {#<form method="post">#}
         {#        <div class="form-group">#}

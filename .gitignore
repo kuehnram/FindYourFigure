@@ -194,3 +194,4 @@ fabric.properties
 /.idea/vcs.xml
 /database.db
 /SparqlTester.py
+/key_file.py

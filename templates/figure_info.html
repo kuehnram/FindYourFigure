@@ -36,7 +36,7 @@
                 {% for ex in row["examples"] %}
                     <b>{{ ex["example_text"] }}</b> - {%  if ex["example_source"] %} <em> {{ex["example_source"] }} {% endif %} {% if ex["example_author"] %}: {{ ex["example_author"] }} {% endif %} </em><br/>
                 {% endfor %}
-
+                Operation: {{ row["operation"] }}
          <!--   Position: {{ row["position"] }} <br>
             Rhetorische Klasse: {{ row["rhetoricalClass"] }} -->
             </div>
